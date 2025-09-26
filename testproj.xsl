@@ -16,13 +16,17 @@
 	    <title>Page</title>
 	  </head>
 	  <body>
-	    <xsl:apply-templates select="@*|node()"/>
+	    <xsl:copy>
+	      <xsl:apply-templates select="@*|node()"/>
+	    </xsl:copy>
 	  </body>
     </html>
   </xsl:template>
   <xsl:template match="bold">
     <span style="font-weight: bolder">
-      <xsl:value-of select="."/>
+	  <xsl:copy>
+		<xsl:apply-templates select="@*|node()"/>
+	  </xsl:copy>
     </span>
   </xsl:template>
 </xsl:stylesheet>
