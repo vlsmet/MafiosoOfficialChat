@@ -245,9 +245,7 @@ h1, h2, h3 {
 }
 
 .index-footer a {
-  color: #ffffff; /* Белый цвет */
-}
-
-.index-footer a:hover {
-  color: #ff9999; /* Светло-розовый при наведении */
+  color: #ffffff; /* Цвет: белый */
+  font-size: 16px; /* Размер шрифта: 16 пикселей (можете поставить 1.1em, 16pt, или другое значение) */
+  text-decoration: none;
 }
