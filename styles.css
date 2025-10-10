@@ -30,25 +30,10 @@ Original file line number	Diff line number	Diff line change
 @@ -1,265 +1,125 @@
 
 /* ============================================
-   MAFIOSO OFFICIAL - LIGHTER MODERN DESIGN
+   MAFIOSO OFFICIAL - MODERN DESIGN
+   Стиль из начала чата
    ============================================ */
 
-/* === ROOT VARIABLES === */
-:root {
-    --primary-bg: #1a1f3a;
-    --secondary-bg: #2d3561;
-    --accent-red: #ff4757;
-    --accent-gold: #feca57;
-    --accent-blue: #5f87e7;
-    --text-light: #ffffff;
-    --text-muted: #c8d6e5;
-    --border-subtle: rgba(255, 255, 255, 0.15);
-    --shadow-strong: 0 8px 32px rgba(0, 0, 0, 0.3);
-    --shadow-glow: 0 0 30px rgba(255, 71, 87, 0.4);
-    --card-bg: rgba(255, 255, 255, 0.1);
-}
-
-/* === RESET & BASE === */
 * {
     margin: 0;
     padding: 0;
@@ -56,16 +41,15 @@ Original file line number	Diff line number	Diff line change
 }
 
 body {
-    font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, sans-serif;
-    background: linear-gradient(135deg, #2d3561 0%, #3f4d89 50%, #4a5fa5 100%);
-    color: var(--text-light);
-    line-height: 1.6;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+    color: #e8e8e8;
     min-height: 100vh;
     overflow-x: hidden;
     position: relative;
 }
 
-/* === ANIMATED BACKGROUND === */
+/* Анимированный фон с частицами */
 body::before {
     content: '';
     position: fixed;
@@ -74,99 +58,79 @@ body::before {
     width: 100%;
     height: 100%;
     background: 
-        radial-gradient(circle at 20% 50%, rgba(255, 71, 87, 0.15) 0%, transparent 50%),
-        radial-gradient(circle at 80% 80%, rgba(95, 135, 231, 0.15) 0%, transparent 50%);
+        radial-gradient(circle at 20% 50%, rgba(220, 53, 69, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 80% 80%, rgba(74, 144, 226, 0.1) 0%, transparent 50%);
     pointer-events: none;
     z-index: 0;
 }
 
-/* === TYPOGRAPHY === */
-h1, h2, h3 {
-    font-weight: 700;
-    letter-spacing: 0.5px;
+/* ============================================
+   ОБЩИЕ ЭЛЕМЕНТЫ
+   ============================================ */
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    position: relative;
+    z-index: 10;
 }
 
-h1 { font-size: clamp(2rem, 5vw, 3.5rem); }
-h2 { font-size: clamp(1.5rem, 4vw, 2.5rem); }
-h3 { font-size: clamp(1.2rem, 3vw, 1.8rem); }
+h1, h2, h3 {
+    font-weight: 700;
+}
 
-/* === LINKS === */
 a {
-    color: var(--accent-gold);
+    color: #ffd700;
     text-decoration: none;
     transition: all 0.3s ease;
 }
 
 a:hover {
-    color: #ffdd87;
-    text-shadow: 0 0 10px rgba(254, 202, 87, 0.5);
-}
-
-/* === CONTAINER === */
-.container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 2rem;
-    position: relative;
-    z-index: 10;
-}
-
-/* === BACK BUTTON === */
-.main-menu-btn-container {
-    padding: 2rem 0;
-    text-align: center;
-}
-
-.back-btn {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5rem;
-    padding: 1rem 2rem;
-    background: rgba(255, 255, 255, 0.15);
-    backdrop-filter: blur(10px);
-    border: 2px solid rgba(255, 255, 255, 0.25);
-    border-radius: 50px;
-    color: var(--text-light);
-    font-size: 1.1rem;
-    font-weight: 600;
-    transition: all 0.3s ease;
-    box-shadow: var(--shadow-strong);
-}
-
-.back-btn:hover {
-    transform: translateX(-5px);
-    background: rgba(255, 71, 87, 0.3);
-    border-color: var(--accent-red);
-    box-shadow: var(--shadow-glow);
+    color: #ffed4e;
+    text-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
 }
 
 /* ============================================
-   INDEX PAGE (Главная страница)
+   HEADER (Шапка сайта)
    ============================================ */
 
-.index-body {
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
+header {
+    position: relative;
+    z-index: 10;
+    background: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(10px);
+    padding: 2rem 0;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
+    border-bottom: 2px solid rgba(220, 53, 69, 0.3);
 }
 
 .index-header {
     padding: 3rem 2rem;
     text-align: center;
-    background: rgba(255, 255, 255, 0.08);
-    backdrop-filter: blur(15px);
-    border-bottom: 3px solid var(--accent-red);
-    box-shadow: var(--shadow-strong);
+    background: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(10px);
+    border-bottom: 2px solid rgba(220, 53, 69, 0.3);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
 }
 
 .index-h1 {
-    background: linear-gradient(135deg, var(--accent-red), #ff6b81);
+    font-size: clamp(2rem, 5vw, 3rem);
+    background: linear-gradient(135deg, #dc3545, #c82333, #bd2130);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
+    text-shadow: 0 0 30px rgba(220, 53, 69, 0.5);
+    margin-bottom: 0.5rem;
+    font-weight: 900;
+    letter-spacing: 2px;
+}
+
+.subtitle {
+    text-align: center;
+    color: #b8b8b8;
+    font-size: 1.1rem;
     margin-bottom: 1rem;
-    filter: drop-shadow(0 0 20px rgba(255, 71, 87, 0.4));
-    animation: fadeInDown 0.8s ease;
 }
 
 .index-p {
@@ -174,34 +138,37 @@ a:hover {
     margin: 0 auto;
     font-size: 1.2rem;
     line-height: 1.8;
-    color: var(--text-light);
-    animation: fadeIn 1s ease 0.3s both;
+    color: #b8b8b8;
 }
+
+/* ============================================
+   INDEX PAGE - КНОПКИ
+   ============================================ */
 
 .index-buttons {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: 2rem;
-    padding: 3rem 2rem;
-    max-width: 1200px;
-    margin: 0 auto;
+    margin: 3rem auto;
+    max-width: 1000px;
+    padding: 0 2rem;
 }
 
 .index-btn {
     position: relative;
-    padding: 2rem 1.5rem;
-    background: rgba(255, 255, 255, 0.12);
+    background: linear-gradient(135deg, rgba(220, 53, 69, 0.1), rgba(189, 33, 48, 0.05));
     backdrop-filter: blur(10px);
-    border: 3px solid rgba(255, 255, 255, 0.2);
-    border-radius: 20px;
-    color: var(--text-light);
+    border: 2px solid rgba(220, 53, 69, 0.3);
+    border-radius: 15px;
+    padding: 2rem;
+    text-align: center;
+    color: #fff;
     font-size: 1.3rem;
     font-weight: 600;
-    text-align: center;
     cursor: pointer;
-    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    transition: all 0.3s ease;
     overflow: hidden;
-    box-shadow: var(--shadow-strong);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
 }
 
 .index-btn::before {
@@ -211,7 +178,7 @@ a:hover {
     left: -100%;
     width: 100%;
     height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    background: linear-gradient(90deg, transparent, rgba(220, 53, 69, 0.2), transparent);
     transition: left 0.5s ease;
 }
 
@@ -221,28 +188,31 @@ a:hover {
 
 .index-btn:hover {
     transform: translateY(-10px) scale(1.02);
-    background: rgba(255, 255, 255, 0.18);
-    border-color: var(--accent-gold);
-    box-shadow: 0 15px 50px rgba(254, 202, 87, 0.4);
+    border-color: rgba(220, 53, 69, 0.6);
+    box-shadow: 0 15px 50px rgba(220, 53, 69, 0.3);
 }
 
+/* ============================================
+   FOOTER
+   ============================================ */
+
 .index-footer {
-    margin-top: auto;
-    padding: 2rem;
     text-align: center;
-    color: var(--text-light);
+    padding: 2rem;
+    margin-top: 4rem;
+    color: #888;
     font-size: 0.9rem;
-    border-top: 1px solid rgba(255, 255, 255, 0.15);
-    background: rgba(0, 0, 0, 0.2);
+    position: relative;
+    z-index: 10;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .index-footer a {
     margin: 0 1rem;
-    display: inline-block;
 }
 
 /* ============================================
-   ROLES PAGE (Страница выбора ролей)
+   ROLES PAGE - Страница выбора ролей
    ============================================ */
 
 .roles-body {
@@ -255,10 +225,11 @@ a:hover {
 }
 
 .roles-h1 {
-    color: var(--accent-gold);
+    font-size: clamp(2.5rem, 6vw, 4rem);
+    color: #ffd700;
     margin-bottom: 3rem;
-    filter: drop-shadow(0 0 30px rgba(254, 202, 87, 0.5));
-    animation: fadeInDown 0.8s ease;
+    text-shadow: 0 0 30px rgba(255, 215, 0, 0.5);
+    text-align: center;
 }
 
 .roles-btn {
@@ -274,7 +245,7 @@ a:hover {
     border: 3px solid transparent;
     cursor: pointer;
     transition: all 0.4s ease;
-    box-shadow: var(--shadow-strong);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
     position: relative;
     overflow: hidden;
 }
@@ -287,7 +258,7 @@ a:hover {
     width: 0;
     height: 0;
     border-radius: 50%;
-    background: rgba(255, 255, 255, 0.15);
+    background: rgba(255, 255, 255, 0.1);
     transform: translate(-50%, -50%);
     transition: width 0.6s, height 0.6s;
 }
@@ -299,41 +270,73 @@ a:hover {
 
 .roles-btn:hover {
     transform: translateY(-10px) scale(1.05);
-    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
 }
 
 .peace-btn {
-    background: linear-gradient(135deg, #48c774, #3ec46d);
+    background: linear-gradient(135deg, #28a745, #218838);
     color: white;
-    border-color: #2fb35a;
+    border-color: #1e7e34;
 }
 
 .peace-btn:hover {
-    box-shadow: 0 20px 60px rgba(72, 199, 116, 0.5);
+    box-shadow: 0 20px 60px rgba(40, 167, 69, 0.5);
 }
 
 .mafia-btn {
-    background: linear-gradient(135deg, #ff4757, #ff6b81);
+    background: linear-gradient(135deg, #1a1a1a, #2d2d2d);
     color: white;
-    border-color: #ff3838;
+    border-color: #dc3545;
 }
 
 .mafia-btn:hover {
-    box-shadow: 0 20px 60px rgba(255, 71, 87, 0.5);
+    box-shadow: 0 20px 60px rgba(220, 53, 69, 0.5);
 }
 
 .neutral-btn {
-    background: linear-gradient(135deg, #8395a7, #747d8c);
+    background: linear-gradient(135deg, #6c757d, #5a6268);
     color: white;
-    border-color: #70798b;
+    border-color: #495057;
 }
 
 .neutral-btn:hover {
-    box-shadow: 0 20px 60px rgba(131, 149, 167, 0.5);
+    box-shadow: 0 20px 60px rgba(108, 117, 125, 0.5);
 }
 
 /* ============================================
-   ROLE LISTS (Списки ролей)
+   КНОПКА "НАЗАД"
+   ============================================ */
+
+.main-menu-btn-container {
+    padding: 2rem 0;
+    text-align: center;
+}
+
+.back-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 1rem 2rem;
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    border: 2px solid rgba(255, 255, 255, 0.1);
+    border-radius: 50px;
+    color: #fff;
+    font-size: 1.1rem;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+}
+
+.back-btn:hover {
+    transform: translateX(-5px);
+    background: rgba(220, 53, 69, 0.2);
+    border-color: #dc3545;
+    box-shadow: 0 15px 50px rgba(220, 53, 69, 0.3);
+}
+
+/* ============================================
+   РОЛИ - Карточки
    ============================================ */
 
 .roles-list-body {
@@ -341,20 +344,22 @@ a:hover {
 }
 
 .role-box {
-    background: rgba(255, 255, 255, 0.12);
+    background: rgba(255, 255, 255, 0.05);
     backdrop-filter: blur(10px);
-    border-left: 5px solid var(--accent-red);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-left: 4px solid #dc3545;
     border-radius: 15px;
     padding: 2rem;
-    margin: 2rem 0;
+    margin: 2rem auto;
+    max-width: 900px;
     transition: all 0.3s ease;
-    box-shadow: var(--shadow-strong);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
 }
 
 .role-box:hover {
     transform: translateX(10px);
-    background: rgba(255, 255, 255, 0.18);
-    box-shadow: var(--shadow-glow);
+    background: rgba(255, 255, 255, 0.08);
+    box-shadow: 0 12px 40px rgba(220, 53, 69, 0.2);
 }
 
 .role-h3 {
@@ -362,7 +367,7 @@ a:hover {
     align-items: center;
     gap: 1rem;
     margin-bottom: 1rem;
-    color: var(--accent-gold);
+    color: #ffd700;
     font-size: 1.5rem;
 }
 
@@ -370,50 +375,57 @@ a:hover {
     width: 48px;
     height: 48px;
     border-radius: 50%;
-    border: 3px solid var(--accent-gold);
+    border: 2px solid #ffd700;
     padding: 4px;
-    background: rgba(255, 255, 255, 0.1);
+    background: rgba(0, 0, 0, 0.3);
 }
 
 .role-p {
     margin: 0.5rem 0;
     line-height: 1.8;
-    color: var(--text-light);
+    color: #b8b8b8;
 }
 
 .role-p b {
-    color: var(--accent-gold);
+    color: #e8e8e8;
 }
 
-/* === FACTION HEADERS === */
+/* Цвета для разных фракций */
 .peace-h2 {
-    color: #48c774;
+    color: #28a745;
     text-align: center;
-    margin-bottom: 2rem;
-    filter: drop-shadow(0 0 20px rgba(72, 199, 116, 0.5));
+    margin: 2rem 0;
+    text-shadow: 0 0 20px rgba(40, 167, 69, 0.5);
+}
+
+.peace-role-box {
+    border-left-color: #28a745;
 }
 
 .mafia-h2 {
-    color: var(--accent-red);
+    color: #dc3545;
     text-align: center;
-    margin-bottom: 2rem;
-    filter: drop-shadow(0 0 20px rgba(255, 71, 87, 0.5));
+    margin: 2rem 0;
+    text-shadow: 0 0 20px rgba(220, 53, 69, 0.5);
+}
+
+.mafia-role-box {
+    border-left-color: #dc3545;
 }
 
 .neutral-h2 {
-    color: #8395a7;
+    color: #6c757d;
     text-align: center;
-    margin-bottom: 2rem;
-    filter: drop-shadow(0 0 20px rgba(131, 149, 167, 0.5));
+    margin: 2rem 0;
+    text-shadow: 0 0 20px rgba(108, 117, 125, 0.5);
 }
 
-/* === FACTION SPECIFIC ROLE BOXES === */
-.peace-role-box { border-left-color: #48c774; }
-.mafia-role-box { border-left-color: var(--accent-red); }
-.neutral-role-box { border-left-color: #8395a7; }
+.neutral-role-box {
+    border-left-color: #6c757d;
+}
 
 /* ============================================
-   SLANG PAGE (Страница сленга)
+   SLANG PAGE - Сленг
    ============================================ */
 
 .slang-body {
@@ -422,45 +434,47 @@ a:hover {
 
 .slang-h1 {
     text-align: center;
-    color: var(--accent-gold);
+    color: #ffd700;
     margin: 2rem 0 3rem;
-    filter: drop-shadow(0 0 20px rgba(254, 202, 87, 0.5));
+    font-size: clamp(2rem, 5vw, 3rem);
+    text-shadow: 0 0 20px rgba(255, 215, 0, 0.5);
 }
 
 .slang-term {
-    background: rgba(255, 255, 255, 0.12);
+    background: rgba(255, 255, 255, 0.05);
     backdrop-filter: blur(10px);
-    border: 3px solid rgba(95, 135, 231, 0.4);
+    border: 2px solid rgba(74, 144, 226, 0.3);
     border-radius: 15px;
     padding: 2rem;
-    margin: 2rem 0;
+    margin: 2rem auto;
+    max-width: 900px;
     transition: all 0.3s ease;
-    box-shadow: var(--shadow-strong);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
 }
 
 .slang-term:hover {
     transform: scale(1.02);
-    background: rgba(255, 255, 255, 0.16);
-    border-color: var(--accent-blue);
-    box-shadow: 0 10px 40px rgba(95, 135, 231, 0.4);
+    border-color: #4a90e2;
+    box-shadow: 0 10px 40px rgba(74, 144, 226, 0.3);
 }
 
 .slang-term-title {
     display: block;
     font-size: 1.5rem;
-    color: var(--accent-blue);
+    color: #4a90e2;
     margin-bottom: 1rem;
-    filter: drop-shadow(0 0 10px rgba(95, 135, 231, 0.4));
+    text-shadow: 0 0 10px rgba(74, 144, 226, 0.3);
 }
 
 .slang-term p {
     margin: 0.8rem 0;
     line-height: 1.8;
+    color: #e8e8e8;
 }
 
 .slang-term ul {
     margin: 1rem 0 0 2rem;
-    color: var(--text-light);
+    color: #b8b8b8;
 }
 
 .slang-term ul li {
@@ -468,7 +482,7 @@ a:hover {
 }
 
 /* ============================================
-   RULES PAGES (Страницы правил)
+   RULES PAGES - Правила
    ============================================ */
 
 .rules-list-body {
@@ -476,29 +490,31 @@ a:hover {
 }
 
 .rules-section {
-    background: rgba(255, 255, 255, 0.1);
+    background: rgba(255, 255, 255, 0.05);
     backdrop-filter: blur(10px);
-    border-left: 5px solid var(--accent-red);
+    border-left: 4px solid #dc3545;
     border-radius: 15px;
     padding: 2rem;
-    margin: 2.5rem 0;
-    box-shadow: var(--shadow-strong);
+    margin: 2.5rem auto;
+    max-width: 1000px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
 }
 
 .rules-section h3 {
-    color: var(--accent-red);
+    color: #dc3545;
     margin-bottom: 1.5rem;
     font-size: 1.6rem;
-    filter: drop-shadow(0 0 10px rgba(255, 71, 87, 0.3));
 }
 
 .rules-section p {
     margin: 1rem 0;
     line-height: 1.8;
+    color: #e8e8e8;
 }
 
 .rules-section ul {
     margin: 1rem 0 1rem 2rem;
+    color: #b8b8b8;
 }
 
 .rules-section li {
@@ -511,32 +527,33 @@ a:hover {
 }
 
 /* ============================================
-   MODERATOR GUIDE (Гайды модераторов)
+   MODERATOR GUIDE - Гайды модераторов
    ============================================ */
 
 .code {
     display: inline-block;
-    background: rgba(0, 0, 0, 0.4);
-    border: 2px solid var(--accent-gold);
+    background: rgba(0, 0, 0, 0.5);
+    border: 1px solid #ffd700;
     border-radius: 8px;
     padding: 0.5rem 1rem;
     margin: 0.5rem 0;
     font-family: 'Courier New', monospace;
-    color: var(--accent-gold);
+    color: #ffd700;
     font-size: 1rem;
 }
 
 .example-box {
-    background: rgba(255, 255, 255, 0.1);
+    background: rgba(255, 255, 255, 0.05);
     backdrop-filter: blur(10px);
-    border: 3px solid rgba(95, 135, 231, 0.4);
+    border: 2px solid rgba(74, 144, 226, 0.3);
     border-radius: 15px;
     padding: 2rem;
-    margin: 2rem 0;
+    margin: 2rem auto;
+    max-width: 900px;
 }
 
 .example-box strong {
-    color: var(--accent-blue);
+    color: #4a90e2;
     font-size: 1.2rem;
 }
 
@@ -546,8 +563,7 @@ a:hover {
     height: auto;
     border-radius: 10px;
     margin: 1rem 0;
-    box-shadow: var(--shadow-strong);
-    border: 2px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
 }
 
 .two-col-gallery {
@@ -562,78 +578,44 @@ a:hover {
 }
 
 /* ============================================
-   ANIMATIONS
-   ============================================ */
-
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-    }
-    to {
-        opacity: 1;
-    }
-}
-
-@keyframes fadeInDown {
-    from {
-        opacity: 0;
-        transform: translateY(-30px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-/* ============================================
    RESPONSIVE DESIGN
    ============================================ */
 
 @media (max-width: 768px) {
     .container {
-        padding: 1rem;
+        padding: 0 1rem;
+    }
+
+    .index-h1 {
+        font-size: 2rem;
     }
     
     .index-buttons {
         grid-template-columns: 1fr;
-        gap: 1rem;
+        gap: 1.5rem;
         padding: 2rem 1rem;
     }
-    
+
     .index-btn {
         padding: 1.5rem 1rem;
         font-size: 1.1rem;
     }
-    
+
     .roles-btn {
         max-width: 100%;
         padding: 2rem 1.5rem;
         font-size: 1.5rem;
     }
-    
-    .role-box {
-        padding: 1.5rem;
-    }
-    
-    .back-btn {
-        padding: 0.8rem 1.5rem;
-        font-size: 1rem;
-    }
-    
+
+    .role-box,
     .slang-term,
     .rules-section,
     .example-box {
         padding: 1.5rem;
     }
+
+    .back-btn {
+        padding: 0.8rem 1.5rem;
+        font-size: 1rem;
+    }
 }
-
-/* ============================================
-   UTILITY CLASSES
-   ============================================ */
-
-.text-center { text-align: center; }
-.text-muted { color: var(--text-muted); }
-.mt-1 { margin-top: 1rem; }
-.mt-2 { margin-top: 2rem; }
-.mb-1 { margin-bottom: 1rem; }
-.mb-2 { margin-bottom: 2rem; }
