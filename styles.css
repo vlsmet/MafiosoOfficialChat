@@ -28,42 +28,48 @@ Search within code
 Lines changed: 125 additions & 265 deletions
 Original file line number	Diff line number	Diff line change
 @@ -1,265 +1,125 @@
-/* Пример CSS для файла styles.css */
-.role-h3 img {
-  /* Задаем фиксированную ширину и высоту для вида "эмодзи" */
-  width: 24px;   /* или любой другой размер, например, 32px */
-  height: 24px;  
-  
-  /* Убираем лишний отступ между изображением и текстом */
-  vertical-align: middle; 
-  
-  /* Небольшой отступ справа от "фото" до текста роли */
-  margin-right: 5px; 
-}
-/* Общие стили для всех страниц */
+/*==================================*/
+/* 1. ГЛАВНЫЕ СТИЛИ (ТЕМНЫЙ ДИЗАЙН) */
+/*==================================*/
+
 body {
     font-family: Arial, sans-serif;
-    color: #fff;
+    color: #fff; /* Белый цвет текста для темного фона */
     margin: 0;
     padding: 0;
     line-height: 1.6;
+    background-color: #1e1e2f; /* Общий темный фон */
 }
-h1, h2, h3 {
-    text-align: center;
-}
+
 .container {
     max-width: 1200px;
     margin: 50px auto;
     padding: 50px;
-    background-color: #2c2c54;
+    background-color: #2c2c54; /* Темно-синий фон контейнера */
     border-radius: 20px;
     box-shadow: 0 8px 20px rgba(0,0,0,0.5);
 }
-.role-box {
-    border-radius: 20px;
-    padding: 25px;
-    margin-top: 30px;
+
+h1, h2, h3, h4 {
+    color: #fff; /* Белый цвет для всех заголовков */
+    text-align: center;
 }
+
+/* Разделительная линия */
+hr {
+    border: 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.1); /* Светлая линия для темного фона */
+    margin: 20px 0;
+}
+
+/*==================================*/
+/* 2. НАВИГАЦИЯ И КНОПКИ */
+/*==================================*/
+
+.main-menu-btn-container {
+    text-align: center;
+}
+
 .back-btn {
     display: inline-block;
     padding: 30px 60px;
@@ -73,368 +79,100 @@ h1, h2, h3 {
     text-decoration: none;
     border-radius: 20px;
     box-shadow: 0 8px 20px rgba(0,0,0,0.5);
-    margin-bottom: 50px;
-    margin-top: 30px;
+    margin: 30px 0 50px;
     transition: transform 0.2s;
 }
 .back-btn:hover {
     transform: scale(1.05);
 }
-/* Стили для кнопки "Главное меню" на всех страницах */
-.main-menu-btn-container {
-    text-align: center;
-}
-/* Стили для главной страницы (index.html) */
-.index-body {
-    background: linear-gradient(135deg, #1e1e2f, #2c2c54);
-    text-align: center;
-}
-.index-header {
-    padding: 40px 20px;
-}
-.index-h1 {
-    font-size: 28px;
-    margin-bottom: 15px;
-}
-.index-p {
-    font-size: 18px;
-    line-height: 1.5;
-    max-width: 700px;
-    margin: 0 auto 30px;
-}
-.index-buttons {
-    display: flex;
-    justify-content: center;
-    gap: 20px;
-    margin-bottom: 50px;
-    flex-wrap: wrap;
-}
-.index-btn {
-    background: #ff4d6d;
-    color: white;
-    padding: 15px 30px;
-    border: none;
-    border-radius: 12px;
-    font-size: 18px;
-    cursor: pointer;
-    transition: 0.3s;
-    text-decoration: none;
-}
-.index-btn:hover {
-    background: #ff6f91;
-    transform: scale(1.05);
-}
-.index-footer {
-    padding: 20px;
-    font-size: 14px;
-    opacity: 0.7;
-}
-/* Стили для страницы выбора ролей (roles.html) */
-.roles-body {
-    background-color: #1e1e2f;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    flex-direction: column;
-}
-.roles-h1 {
-    font-size: 60px;
-    margin-bottom: 60px;
-    color: #f1c40f;
-}
-.roles-btn {
-    display: block;
-    width: 500px;
-    margin: 30px auto;
-    padding: 40px;
-    font-size: 36px;
-    border: none;
-    border-radius: 20px;
-    cursor: pointer;
-    color: #fff;
-    transition: transform 0.2s, background-color 0.2s;
-    text-decoration: none;
-}
-.roles-btn:hover {
-    transform: scale(1.05);
-}
-.peace-btn { background-color: #ff914d; }
-.peace-btn:hover { background-color: #ffaa70; }
-.mafia-btn { background: rgba(0, 0, 0, 0.4); border: 2px solid rgba(255, 255, 255, 0.2); }
-.mafia-btn:hover { background: rgba(0, 0, 0, 0.6); }
-.neutral-btn { background-color: #555; }
-.neutral-btn:hover { background-color: #666; }
-/* Стили для страниц с описанием ролей (peace.html, mafia.html, neutral.html) */
+
+/*==================================*/
+/* 3. СТИЛИ РОЛЕЙ (Списки) */
+/*==================================*/
+
 .roles-list-body {
-    background-color: #1e1e2f;
+    background-color: #1e1e2f; /* Фон для страниц со списками ролей */
 }
-.peace-h2 {
-    font-size: 50px;
-    color: #ff914d;
-    margin-bottom: 40px;
+
+/* Заголовки списков ролей */
+.peace-h2 { color: #ff914d; }
+.mafia-h2 { color: #fff; }
+.neutral-h2 { color: #bbb; }
+
+.role-box {
+    border-radius: 20px;
+    padding: 25px;
+    margin-top: 30px;
+    /* Общие стили для всех role-box */
 }
-.mafia-h2 {
-    font-size: 50px;
-    color: #fff;
-    margin-bottom: 40px;
-}
-.neutral-h2 {
-    font-size: 50px;
-    color: #bbb;
-    margin-bottom: 40px;
-}
+.peace-role-box { border: 2px solid #ff914d; }
+.mafia-role-box { border: 2px solid rgba(0, 0, 0, 0.4); background: rgba(0, 0, 0, 0.2); }
+.neutral-role-box { border: 2px solid #555; }
+
 .role-h3 {
     font-size: 36px;
     color: #fff;
     margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    margin-top: 0;
 }
+
 .role-p {
     font-size: 28px;
     line-height: 1.6;
 }
-.peace-role-box {
-    border: 2px solid #ff914d;
-}
-.mafia-role-box {
-    border: 2px solid rgba(0, 0, 0, 0.4);
-    background: rgba(0, 0, 0, 0.2);
-}
-.neutral-role-box {
-    border: 2px solid #555;
-}
-/* Стили для страницы сленга (slang.html) */
-.slang-body {
-    background: linear-gradient(to right, #1f4037, #99f2c8);
-    padding: 20px;
-}
-.slang-h1 {
-    margin-bottom: 30px;
-    font-size: 36px;
-}
-.slang-term {
-    margin-bottom: 25px;
-    padding: 15px;
-    border-radius: 10px;
-    background: rgba(0, 0, 0, 0.4);
-}
-.slang-term-title {
-    display: block;
-    font-size: 20px;
-    margin-bottom: 10px;
-    color: #f1c40f;
-}
-.slang-back-btn {
-    display: block;
-    width: 280px;
-    margin: 40px auto;
-    text-align: center;
-    padding: 18px;
-    font-size: 20px;
-    background: #e74c3c;
-    color: #fff;
-    text-decoration: none;
-    font-weight: bold;
-    border-radius: 12px;
-    transition: background 0.3s ease, transform 0.2s ease;
-}
-.slang-back-btn:hover {
-    background: #c0392b;
-    transform: scale(1.05);
-}
-/* В файле styles.css */
-.container p, 
-.container li {
-  font-size: 16px; /* Установите желаемый размер шрифта */
-  line-height: 1.5; /* Добавьте межстрочный интервал, чтобы текст читался легче */
-}
-.index-footer a {
-  color: #ffffff; /* Цвет: белый */
-  font-size: 16px; /* Размер шрифта: 16 пикселей (можете поставить 1.1em, 16pt, или другое значение) */
-  text-decoration: none;
-}
-/* Устанавливает одинаковый размер для всех изображений с классом .role-icon, 
-   чтобы они выглядели как эмодзи */
-.role-icon {
-  width: 53px;   /* Ширина */
-  height: 53px;  /* Высота */
-  
-  /* Выравнивает иконку по вертикали с текстом */
-  vertical-align: middle; 
-  
-  /* Добавляет небольшой отступ справа от иконки до текста роли */
-  margin-right: 5px; 
-}
-/* Стили для примеров команд */
-.code {
-    font-family: monospace;
-    background-color: #eee;
-    padding: 5px 8px;
-    border-radius: 3px;
-    display: inline-block;
-    margin: 5px 0;
-    color: #c2185b; /* Цвет для команд */
-}
-
-/* Стили для блоков с примерами */
-.example-box {
-    border: 1px dashed #ccc;
-    padding: 10px;
-    margin-bottom: 15px;
-    background-color: #fafafa;
-}
-
-/* Разделительная линия */
-hr {
-    border: 0;
-    border-top: 1px solid #eee;
-    margin: 20px 0;
-}
-/* Общие стили для тела и контейнера */
-body {
-    font-family: Arial, sans-serif;
-    background-color: #f0f0f0;
-    color: #333;
-    margin: 0;
-    padding: 20px;
-}
-
-.container {
-    max-width: 800px;
-    margin: 0 auto;
-    background-color: #fff;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-
-/* Стили заголовков фракций */
-.peace-h2 {
-    color: #4CAF50; /* Зеленый для Мирных */
-    border-bottom: 2px solid #4CAF50;
-    padding-bottom: 10px;
-}
-
-.mafia-h2 {
-    color: #d32f2f; /* Красный для Мафии */
-    border-bottom: 2px solid #d32f2f;
-    padding-bottom: 10px;
-}
-
-.neutral-h2 {
-    color: #5d4037; /* Коричневый/темный для Нейтралов */
-    border-bottom: 2px solid #5d4037;
-    padding-bottom: 10px;
-}
-
-/* Стили для общих заголовков (например, в Гайдах) */
-h2 {
-    color: #1976D2;
-    border-bottom: 2px solid #1976D2;
-    padding-bottom: 10px;
-    margin-top: 0;
-}
-
-/* Стили для карточек ролей */
-.role-box {
-    padding: 15px;
-    margin-bottom: 15px;
-    border-left: 5px solid;
-    border-radius: 4px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
-}
-
-.role-h3 {
-    display: flex;
-    align-items: center;
-    margin-top: 0;
-    margin-bottom: 10px;
-    font-size: 1.2em;
-}
 
 .role-icon {
-    width: 24px;
-    height: 24px;
+    width: 53px;
+    height: 53px;
+    vertical-align: middle;
     margin-right: 10px;
 }
 
-.role-p {
-    margin: 5px 0;
-    padding-left: 35px;
-}
+/*==================================*/
+/* 4. СТИЛИ ДЛЯ ГАЙДОВ ESSENTIALS */
+/*==================================*/
 
-/* Цветовая кодировка карточек по фракциям */
-.peace-role-box {
-    border-left-color: #4CAF50;
-    background-color: #e8f5e9;
-}
-
-.mafia-role-box {
-    border-left-color: #d32f2f;
-    background-color: #ffebee;
-}
-
-.neutral-role-box {
-    border-left-color: #5d4037;
-    background-color: #efebe9;
-}
-
-/* Кнопка "Главное меню" */
-.main-menu-btn-container {
-    text-align: center;
-    margin-bottom: 20px;
-}
-
-.back-btn {
-    display: inline-block;
-    padding: 10px 15px;
-    background-color: #607D8B;
-    color: white;
-    text-decoration: none;
-    border-radius: 4px;
-    transition: background-color 0.3s;
-}
-
-.back-btn:hover {
-    background-color: #455A64;
-}
-
-/* Стили для примеров в Гайдах Essentials */
+/* Команды */
 .code {
     font-family: monospace;
-    background-color: #eee;
+    background-color: #555; /* Темный фон для команды */
     padding: 5px 8px;
     border-radius: 3px;
     display: inline-block;
     margin: 5px 0;
-    color: #c2185b;
+    color: #f1c40f; /* Желтый/светлый цвет для команды */
 }
 
+/* Блоки примеров (ошибок) */
 .example-box {
     border: 1px dashed #ccc;
     padding: 10px;
     margin-bottom: 15px;
-    background-color: #fafafa;
-    /* ИСПРАВЛЕНИЕ: Гарантируем, что текст внутри блока будет темным */
-    color: #333; 
+    background-color: #404066; /* Темно-серый фон для блока */
+    color: #fff; /* **ИСПРАВЛЕНИЕ: Белый цвет текста для читаемости на темном фоне** */
 }
 
+/* Изображения в примерах */
 .example-img {
     max-width: 100%;
     height: auto;
     display: block;
+    margin: 10px auto;
+}
+
+/* Контейнер для двух картинок рядом */
+.two-col-gallery {
+    overflow: hidden;
     margin: 10px 0;
+    text-align: center;
 }
 
 .example-img.two-col {
     max-width: 48%;
     display: inline-block;
-    margin-right: 2%;
+    margin: 0 1%;
+    height: auto;
     vertical-align: top;
-}
-
-hr {
-    border: 0;
-    border-top: 1px solid #eee;
-    margin: 20px 0;
 }
