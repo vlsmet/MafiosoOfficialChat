@@ -32,7 +32,7 @@ Original file line number	Diff line number	Diff line change
 /* Общие стили для всех страниц */
 body {
     font-family: Arial, sans-serif;
-    color: #fff; /* Основной цвет текста - белый (для темного фона) */
+    color: #fff;
     margin: 0;
     padding: 0;
     line-height: 1.6;
@@ -42,17 +42,7 @@ h1, h2, h3 {
     text-align: center;
 }
 
-.container {
-    max-width: 1200px;
-    margin: 50px auto;
-    padding: 50px;
-    background-color: #2c2c54;
-    border-radius: 20px;
-    box-shadow: 0 8px 20px rgba(0,0,0,0.5);
-}
-
-/* --- КРИТИЧЕСКОЕ ИСПРАВЛЕНИЕ: Видимость ссылок --- */
-/* На темном фоне ссылки должны быть светлыми/цветными, чтобы выделяться */
+/* --- ИСПРАВЛЕНИЕ 1: Видимость ссылок на темном фоне --- */
 a {
     color: #f1c40f; /* Желтый цвет для всех ссылок */
     text-decoration: none;
@@ -62,7 +52,16 @@ a:hover {
     color: #ffd700;
     text-decoration: underline;
 }
-/* ------------------------------------------------ */
+/* --------------------------------------------------- */
+
+.container {
+    max-width: 1200px;
+    margin: 50px auto;
+    padding: 50px;
+    background-color: #2c2c54;
+    border-radius: 20px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.5);
+}
 
 .role-box {
     border-radius: 20px;
@@ -240,11 +239,11 @@ a:hover {
 .slang-body {
     background: linear-gradient(to right, #1f4037, #99f2c8);
     padding: 20px;
-    /* --- КРИТИЧЕСКОЕ ИСПРАВЛЕНИЕ: Текст должен быть темным на светлом фоне сленга --- */
+    /* --- ИСПРАВЛЕНИЕ 2: Темный текст на светлом фоне сленга --- */
     color: #333;
 }
 
-/* --- ТАКЖЕ СДЕЛАЕМ ЗАГОЛОВКИ НА СТРАНИЦЕ СЛЕНГА ТЕМНЫМИ --- */
+/* --- ИСПРАВЛЕНИЕ 3: Темные заголовки на странице сленга --- */
 .slang-body h1, .slang-body h2, .slang-body h3 {
     color: #333;
 }
@@ -259,15 +258,14 @@ a:hover {
     padding: 15px;
     border-radius: 10px;
     background: rgba(0, 0, 0, 0.4);
-    /* --- ТЕКСТ ВНУТРИ СЛЕНГ-ТЕРМОВ --- */
-    color: #fff; /* Вернем белый цвет для текста внутри блока с темным фоном */
+    color: #fff; /* Текст внутри сленг-термов остается белым (на темном фоне блока) */
 }
 
 .slang-term-title {
     display: block;
     font-size: 20px;
     margin-bottom: 10px;
-    color: #f1c40f; /* Яркий цвет для заголовка сленг-термина */
+    color: #f1c40f;
 }
 
 .slang-back-btn {
@@ -297,7 +295,7 @@ a:hover {
   line-height: 1.5; 
 }
 
-/* --- СТИЛИ ДЛЯ ГАЙДОВ ESSENTIALS (для видимости) --- */
+/* --- СТИЛИ ДЛЯ ГАЙДОВ ESSENTIALS (добавлено из предыдущего контекста) --- */
 .code {
     font-family: monospace;
     background-color: #eee;
@@ -313,5 +311,6 @@ a:hover {
     padding: 10px;
     margin-bottom: 15px;
     background-color: #fafafa; /* Светлый фон */
-    color: #333; /* **КРИТИЧЕСКОЕ ИСПРАВЛЕНИЕ: Темный текст на светлом фоне** */
+    /* --- ИСПРАВЛЕНИЕ 4: Темный текст на светлом фоне примера --- */
+    color: #333; 
 }
