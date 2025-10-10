@@ -30,21 +30,22 @@ Original file line number	Diff line number	Diff line change
 @@ -1,265 +1,125 @@
 
 /* ============================================
-   MAFIOSO OFFICIAL - MODERN DESIGN SYSTEM
+   MAFIOSO OFFICIAL - LIGHTER MODERN DESIGN
    ============================================ */
 
 /* === ROOT VARIABLES === */
 :root {
-    --primary-dark: #0a0e27;
-    --secondary-dark: #1a1f3a;
-    --accent-red: #dc3545;
-    --accent-gold: #ffd700;
-    --accent-blue: #4a90e2;
-    --text-light: #e8e8e8;
-    --text-muted: #b8b8b8;
-    --border-subtle: rgba(255, 255, 255, 0.1);
-    --shadow-strong: 0 8px 32px rgba(0, 0, 0, 0.4);
-    --shadow-glow: 0 0 20px rgba(220, 53, 69, 0.3);
+    --primary-bg: #1a1f3a;
+    --secondary-bg: #2d3561;
+    --accent-red: #ff4757;
+    --accent-gold: #feca57;
+    --accent-blue: #5f87e7;
+    --text-light: #ffffff;
+    --text-muted: #c8d6e5;
+    --border-subtle: rgba(255, 255, 255, 0.15);
+    --shadow-strong: 0 8px 32px rgba(0, 0, 0, 0.3);
+    --shadow-glow: 0 0 30px rgba(255, 71, 87, 0.4);
+    --card-bg: rgba(255, 255, 255, 0.1);
 }
 
 /* === RESET & BASE === */
@@ -56,7 +57,7 @@ Original file line number	Diff line number	Diff line change
 
 body {
     font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, sans-serif;
-    background: linear-gradient(135deg, var(--primary-dark) 0%, var(--secondary-dark) 50%, #0f3460 100%);
+    background: linear-gradient(135deg, #2d3561 0%, #3f4d89 50%, #4a5fa5 100%);
     color: var(--text-light);
     line-height: 1.6;
     min-height: 100vh;
@@ -73,8 +74,8 @@ body::before {
     width: 100%;
     height: 100%;
     background: 
-        radial-gradient(circle at 20% 50%, rgba(220, 53, 69, 0.1) 0%, transparent 50%),
-        radial-gradient(circle at 80% 80%, rgba(74, 144, 226, 0.1) 0%, transparent 50%);
+        radial-gradient(circle at 20% 50%, rgba(255, 71, 87, 0.15) 0%, transparent 50%),
+        radial-gradient(circle at 80% 80%, rgba(95, 135, 231, 0.15) 0%, transparent 50%);
     pointer-events: none;
     z-index: 0;
 }
@@ -97,8 +98,8 @@ a {
 }
 
 a:hover {
-    color: #ffed4e;
-    text-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+    color: #ffdd87;
+    text-shadow: 0 0 10px rgba(254, 202, 87, 0.5);
 }
 
 /* === CONTAINER === */
@@ -121,9 +122,9 @@ a:hover {
     align-items: center;
     gap: 0.5rem;
     padding: 1rem 2rem;
-    background: rgba(255, 255, 255, 0.05);
+    background: rgba(255, 255, 255, 0.15);
     backdrop-filter: blur(10px);
-    border: 2px solid var(--border-subtle);
+    border: 2px solid rgba(255, 255, 255, 0.25);
     border-radius: 50px;
     color: var(--text-light);
     font-size: 1.1rem;
@@ -134,7 +135,7 @@ a:hover {
 
 .back-btn:hover {
     transform: translateX(-5px);
-    background: rgba(220, 53, 69, 0.2);
+    background: rgba(255, 71, 87, 0.3);
     border-color: var(--accent-red);
     box-shadow: var(--shadow-glow);
 }
@@ -152,19 +153,19 @@ a:hover {
 .index-header {
     padding: 3rem 2rem;
     text-align: center;
-    background: rgba(0, 0, 0, 0.3);
-    backdrop-filter: blur(10px);
-    border-bottom: 2px solid var(--accent-red);
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(15px);
+    border-bottom: 3px solid var(--accent-red);
     box-shadow: var(--shadow-strong);
 }
 
 .index-h1 {
-    background: linear-gradient(135deg, var(--accent-red), #c82333);
+    background: linear-gradient(135deg, var(--accent-red), #ff6b81);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
     margin-bottom: 1rem;
-    text-shadow: 0 0 30px rgba(220, 53, 69, 0.5);
+    filter: drop-shadow(0 0 20px rgba(255, 71, 87, 0.4));
     animation: fadeInDown 0.8s ease;
 }
 
@@ -173,7 +174,7 @@ a:hover {
     margin: 0 auto;
     font-size: 1.2rem;
     line-height: 1.8;
-    color: var(--text-muted);
+    color: var(--text-light);
     animation: fadeIn 1s ease 0.3s both;
 }
 
@@ -189,9 +190,9 @@ a:hover {
 .index-btn {
     position: relative;
     padding: 2rem 1.5rem;
-    background: linear-gradient(135deg, rgba(220, 53, 69, 0.1), rgba(189, 33, 48, 0.05));
+    background: rgba(255, 255, 255, 0.12);
     backdrop-filter: blur(10px);
-    border: 2px solid rgba(220, 53, 69, 0.3);
+    border: 3px solid rgba(255, 255, 255, 0.2);
     border-radius: 20px;
     color: var(--text-light);
     font-size: 1.3rem;
@@ -210,7 +211,7 @@ a:hover {
     left: -100%;
     width: 100%;
     height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(220, 53, 69, 0.3), transparent);
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
     transition: left 0.5s ease;
 }
 
@@ -220,17 +221,18 @@ a:hover {
 
 .index-btn:hover {
     transform: translateY(-10px) scale(1.02);
-    border-color: var(--accent-red);
-    box-shadow: 0 15px 50px rgba(220, 53, 69, 0.4);
+    background: rgba(255, 255, 255, 0.18);
+    border-color: var(--accent-gold);
+    box-shadow: 0 15px 50px rgba(254, 202, 87, 0.4);
 }
 
 .index-footer {
     margin-top: auto;
     padding: 2rem;
     text-align: center;
-    color: var(--text-muted);
+    color: var(--text-light);
     font-size: 0.9rem;
-    border-top: 1px solid var(--border-subtle);
+    border-top: 1px solid rgba(255, 255, 255, 0.15);
     background: rgba(0, 0, 0, 0.2);
 }
 
@@ -255,7 +257,7 @@ a:hover {
 .roles-h1 {
     color: var(--accent-gold);
     margin-bottom: 3rem;
-    text-shadow: 0 0 30px rgba(255, 215, 0, 0.5);
+    filter: drop-shadow(0 0 30px rgba(254, 202, 87, 0.5));
     animation: fadeInDown 0.8s ease;
 }
 
@@ -285,7 +287,7 @@ a:hover {
     width: 0;
     height: 0;
     border-radius: 50%;
-    background: rgba(255, 255, 255, 0.1);
+    background: rgba(255, 255, 255, 0.15);
     transform: translate(-50%, -50%);
     transition: width 0.6s, height 0.6s;
 }
@@ -297,37 +299,37 @@ a:hover {
 
 .roles-btn:hover {
     transform: translateY(-10px) scale(1.05);
-    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
 }
 
 .peace-btn {
-    background: linear-gradient(135deg, #28a745, #218838);
+    background: linear-gradient(135deg, #48c774, #3ec46d);
     color: white;
-    border-color: #1e7e34;
+    border-color: #2fb35a;
 }
 
 .peace-btn:hover {
-    box-shadow: 0 20px 60px rgba(40, 167, 69, 0.5);
+    box-shadow: 0 20px 60px rgba(72, 199, 116, 0.5);
 }
 
 .mafia-btn {
-    background: linear-gradient(135deg, #1a1a1a, #2d2d2d);
+    background: linear-gradient(135deg, #ff4757, #ff6b81);
     color: white;
-    border-color: var(--accent-red);
+    border-color: #ff3838;
 }
 
 .mafia-btn:hover {
-    box-shadow: 0 20px 60px rgba(220, 53, 69, 0.5);
+    box-shadow: 0 20px 60px rgba(255, 71, 87, 0.5);
 }
 
 .neutral-btn {
-    background: linear-gradient(135deg, #6c757d, #5a6268);
+    background: linear-gradient(135deg, #8395a7, #747d8c);
     color: white;
-    border-color: #495057;
+    border-color: #70798b;
 }
 
 .neutral-btn:hover {
-    box-shadow: 0 20px 60px rgba(108, 117, 125, 0.5);
+    box-shadow: 0 20px 60px rgba(131, 149, 167, 0.5);
 }
 
 /* ============================================
@@ -339,9 +341,9 @@ a:hover {
 }
 
 .role-box {
-    background: rgba(255, 255, 255, 0.05);
+    background: rgba(255, 255, 255, 0.12);
     backdrop-filter: blur(10px);
-    border-left: 4px solid var(--accent-red);
+    border-left: 5px solid var(--accent-red);
     border-radius: 15px;
     padding: 2rem;
     margin: 2rem 0;
@@ -351,7 +353,7 @@ a:hover {
 
 .role-box:hover {
     transform: translateX(10px);
-    background: rgba(255, 255, 255, 0.08);
+    background: rgba(255, 255, 255, 0.18);
     box-shadow: var(--shadow-glow);
 }
 
@@ -368,47 +370,47 @@ a:hover {
     width: 48px;
     height: 48px;
     border-radius: 50%;
-    border: 2px solid var(--accent-gold);
+    border: 3px solid var(--accent-gold);
     padding: 4px;
-    background: rgba(0, 0, 0, 0.3);
+    background: rgba(255, 255, 255, 0.1);
 }
 
 .role-p {
     margin: 0.5rem 0;
     line-height: 1.8;
-    color: var(--text-muted);
+    color: var(--text-light);
 }
 
 .role-p b {
-    color: var(--text-light);
+    color: var(--accent-gold);
 }
 
 /* === FACTION HEADERS === */
 .peace-h2 {
-    color: #28a745;
+    color: #48c774;
     text-align: center;
     margin-bottom: 2rem;
-    text-shadow: 0 0 20px rgba(40, 167, 69, 0.5);
+    filter: drop-shadow(0 0 20px rgba(72, 199, 116, 0.5));
 }
 
 .mafia-h2 {
     color: var(--accent-red);
     text-align: center;
     margin-bottom: 2rem;
-    text-shadow: 0 0 20px rgba(220, 53, 69, 0.5);
+    filter: drop-shadow(0 0 20px rgba(255, 71, 87, 0.5));
 }
 
 .neutral-h2 {
-    color: #6c757d;
+    color: #8395a7;
     text-align: center;
     margin-bottom: 2rem;
-    text-shadow: 0 0 20px rgba(108, 117, 125, 0.5);
+    filter: drop-shadow(0 0 20px rgba(131, 149, 167, 0.5));
 }
 
 /* === FACTION SPECIFIC ROLE BOXES === */
-.peace-role-box { border-left-color: #28a745; }
+.peace-role-box { border-left-color: #48c774; }
 .mafia-role-box { border-left-color: var(--accent-red); }
-.neutral-role-box { border-left-color: #6c757d; }
+.neutral-role-box { border-left-color: #8395a7; }
 
 /* ============================================
    SLANG PAGE (Страница сленга)
@@ -422,13 +424,13 @@ a:hover {
     text-align: center;
     color: var(--accent-gold);
     margin: 2rem 0 3rem;
-    text-shadow: 0 0 20px rgba(255, 215, 0, 0.5);
+    filter: drop-shadow(0 0 20px rgba(254, 202, 87, 0.5));
 }
 
 .slang-term {
-    background: linear-gradient(135deg, rgba(74, 144, 226, 0.1), rgba(52, 152, 219, 0.05));
+    background: rgba(255, 255, 255, 0.12);
     backdrop-filter: blur(10px);
-    border: 2px solid rgba(74, 144, 226, 0.3);
+    border: 3px solid rgba(95, 135, 231, 0.4);
     border-radius: 15px;
     padding: 2rem;
     margin: 2rem 0;
@@ -438,8 +440,9 @@ a:hover {
 
 .slang-term:hover {
     transform: scale(1.02);
+    background: rgba(255, 255, 255, 0.16);
     border-color: var(--accent-blue);
-    box-shadow: 0 10px 40px rgba(74, 144, 226, 0.3);
+    box-shadow: 0 10px 40px rgba(95, 135, 231, 0.4);
 }
 
 .slang-term-title {
@@ -447,7 +450,7 @@ a:hover {
     font-size: 1.5rem;
     color: var(--accent-blue);
     margin-bottom: 1rem;
-    text-shadow: 0 0 10px rgba(74, 144, 226, 0.3);
+    filter: drop-shadow(0 0 10px rgba(95, 135, 231, 0.4));
 }
 
 .slang-term p {
@@ -457,7 +460,7 @@ a:hover {
 
 .slang-term ul {
     margin: 1rem 0 0 2rem;
-    color: var(--text-muted);
+    color: var(--text-light);
 }
 
 .slang-term ul li {
@@ -473,9 +476,9 @@ a:hover {
 }
 
 .rules-section {
-    background: rgba(255, 255, 255, 0.03);
+    background: rgba(255, 255, 255, 0.1);
     backdrop-filter: blur(10px);
-    border-left: 4px solid var(--accent-red);
+    border-left: 5px solid var(--accent-red);
     border-radius: 15px;
     padding: 2rem;
     margin: 2.5rem 0;
@@ -486,6 +489,7 @@ a:hover {
     color: var(--accent-red);
     margin-bottom: 1.5rem;
     font-size: 1.6rem;
+    filter: drop-shadow(0 0 10px rgba(255, 71, 87, 0.3));
 }
 
 .rules-section p {
@@ -512,8 +516,8 @@ a:hover {
 
 .code {
     display: inline-block;
-    background: rgba(0, 0, 0, 0.5);
-    border: 1px solid var(--accent-gold);
+    background: rgba(0, 0, 0, 0.4);
+    border: 2px solid var(--accent-gold);
     border-radius: 8px;
     padding: 0.5rem 1rem;
     margin: 0.5rem 0;
@@ -523,9 +527,9 @@ a:hover {
 }
 
 .example-box {
-    background: rgba(255, 255, 255, 0.05);
+    background: rgba(255, 255, 255, 0.1);
     backdrop-filter: blur(10px);
-    border: 2px solid rgba(74, 144, 226, 0.3);
+    border: 3px solid rgba(95, 135, 231, 0.4);
     border-radius: 15px;
     padding: 2rem;
     margin: 2rem 0;
@@ -543,6 +547,7 @@ a:hover {
     border-radius: 10px;
     margin: 1rem 0;
     box-shadow: var(--shadow-strong);
+    border: 2px solid rgba(255, 255, 255, 0.2);
 }
 
 .two-col-gallery {
@@ -631,4 +636,4 @@ a:hover {
 .mt-1 { margin-top: 1rem; }
 .mt-2 { margin-top: 2rem; }
 .mb-1 { margin-bottom: 1rem; }
-.mb-2 { margin-bottom: 2rem;
+.mb-2 { margin-bottom: 2rem; }
