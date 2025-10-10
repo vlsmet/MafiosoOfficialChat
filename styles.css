@@ -265,3 +265,28 @@ h1, h2, h3 {
   /* Добавляет небольшой отступ справа от иконки до текста роли */
   margin-right: 5px; 
 }
+/* Стили для примеров команд */
+.code {
+    font-family: monospace;
+    background-color: #eee;
+    padding: 5px 8px;
+    border-radius: 3px;
+    display: inline-block;
+    margin: 5px 0;
+    color: #c2185b; /* Цвет для команд */
+}
+
+/* Стили для блоков с примерами */
+.example-box {
+    border: 1px dashed #ccc;
+    padding: 10px;
+    margin-bottom: 15px;
+    background-color: #fafafa;
+}
+
+/* Разделительная линия */
+hr {
+    border: 0;
+    border-top: 1px solid #eee;
+    margin: 20px 0;
+}
