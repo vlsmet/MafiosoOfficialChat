@@ -1,225 +1,18 @@
-<!DOCTYPE html>
-<html lang="ru">
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>Mafioso Official Chat</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
-            color: #e8e8e8;
-            min-height: 100vh;
-            overflow-x: hidden;
-        }
-
-        .particles {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-            z-index: 1;
-        }
-
-        .particle {
-            position: absolute;
-            width: 2px;
-            height: 2px;
-            background: rgba(255, 255, 255, 0.3);
-            border-radius: 50%;
-            animation: float 15s infinite;
-        }
-
-        @keyframes float {
-            0%, 100% { transform: translateY(0) translateX(0); opacity: 0; }
-            10% { opacity: 1; }
-            90% { opacity: 1; }
-            100% { transform: translateY(-100vh) translateX(50px); opacity: 0; }
-        }
-
-        header {
-            position: relative;
-            z-index: 10;
-            background: rgba(0, 0, 0, 0.5);
-            backdrop-filter: blur(10px);
-            padding: 2rem 0;
-            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
-            border-bottom: 2px solid rgba(220, 53, 69, 0.3);
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 2rem;
-            position: relative;
-            z-index: 10;
-        }
-
-        h1 {
-            text-align: center;
-            font-size: 3rem;
-            background: linear-gradient(135deg, #dc3545, #c82333, #bd2130);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            text-shadow: 0 0 30px rgba(220, 53, 69, 0.5);
-            margin-bottom: 0.5rem;
-            font-weight: 900;
-            letter-spacing: 2px;
-        }
-
-        .subtitle {
-            text-align: center;
-            color: #b8b8b8;
-            font-size: 1.1rem;
-            margin-bottom: 1rem;
-        }
-
-        .welcome-card {
-            background: rgba(255, 255, 255, 0.05);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 20px;
-            padding: 2.5rem;
-            margin: 3rem auto;
-            max-width: 900px;
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-
-        .welcome-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 12px 40px rgba(220, 53, 69, 0.2);
-        }
-
-        .welcome-text {
-            font-size: 1.2rem;
-            line-height: 1.8;
-            text-align: center;
-            margin-bottom: 1.5rem;
-        }
-
-        .disclaimer {
-            font-size: 0.95rem;
-            color: #999;
-            text-align: center;
-            font-style: italic;
-            padding-top: 1rem;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-        }
-
-        .nav-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 2rem;
-            margin: 3rem auto;
-            max-width: 1000px;
-        }
-
-        .nav-card {
-            background: linear-gradient(135deg, rgba(220, 53, 69, 0.1), rgba(189, 33, 48, 0.05));
-            backdrop-filter: blur(10px);
-            border: 2px solid rgba(220, 53, 69, 0.3);
-            border-radius: 15px;
-            padding: 2rem;
-            text-align: center;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
-            text-decoration: none;
-            display: block;
-        }
-
-        .nav-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(220, 53, 69, 0.2), transparent);
-            transition: left 0.5s ease;
-        }
-
-        .nav-card:hover::before {
-            left: 100%;
-        }
-
-        .nav-card:hover {
-            transform: translateY(-10px) scale(1.02);
-            border-color: rgba(220, 53, 69, 0.6);
-            box-shadow: 0 15px 50px rgba(220, 53, 69, 0.3);
-        }
-
-        .nav-icon {
-            font-size: 3rem;
-            margin-bottom: 1rem;
-        }
-
-        .nav-card h2 {
-            font-size: 1.5rem;
-            margin-bottom: 0.5rem;
-            color: #fff;
-        }
-
-        .nav-card p {
-            color: #b8b8b8;
-            font-size: 0.95rem;
-        }
-
-        footer {
-            text-align: center;
-            padding: 2rem;
-            margin-top: 4rem;
-            color: #888;
-            font-size: 0.9rem;
-            position: relative;
-            z-index: 10;
-        }
-
-        footer a {
-            color: #ffd700;
-            margin: 0 1rem;
-            text-decoration: none;
-            transition: color 0.3s ease;
-        }
-
-        footer a:hover {
-            color: #ffed4e;
-        }
-
-        @media (max-width: 768px) {
-            h1 {
-                font-size: 2rem;
-            }
-            
-            .welcome-card {
-                padding: 1.5rem;
-                margin: 2rem 1rem;
-            }
-
-            .nav-grid {
-                grid-template-columns: 1fr;
-                gap: 1.5rem;
-            }
-        }
-    </style>
+    <link rel="stylesheet" type="text/css" href="styles.css"/>
 </head>
 <body>
     <div class="particles" id="particles"></div>
 
-    <header>
+    <header class="index-header">
         <div class="container">
-            <h1>🎭 MAFIOSO OFFICIAL 🎭</h1>
+            <h1 class="index-h1">🎭 MAFIOSO OFFICIAL 🎭</h1>
             <p class="subtitle">Добро пожаловать в мир интриг и стратегии</p>
         </div>
     </header>
@@ -227,7 +20,7 @@
     <main class="container">
         <div class="welcome-card">
             <p class="welcome-text">
-                Здравствуйте, дорогие игроки Mafioso Official!<br>
+                Здравствуйте, дорогие игроки Mafioso Official!<br/>
                 Данный сайт предназначен для того, чтобы каждый человек чата мог узнать побольше о ролях и о сленге чата.
             </p>
             <p class="disclaimer">
@@ -235,50 +28,47 @@
             </p>
         </div>
 
-        <div class="nav-grid">
-            <a href="roles.html" class="nav-card">
+        <div class="index-buttons">
+            <a href="roles.xhtml" class="index-btn">
                 <div class="nav-icon">👤</div>
-                <h2>Роли</h2>
-                <p>Узнайте о всех игровых ролях: мафия, шериф, доктор и другие</p>
+                <div>Роли</div>
             </a>
 
-            <a href="slang.html" class="nav-card">
+            <a href="slang.xhtml" class="index-btn">
                 <div class="nav-icon">🗨️</div>
-                <h2>Сленг чата</h2>
-                <p>Познакомьтесь с терминологией и сленгом игрового сообщества</p>
+                <div>Сленг чата</div>
             </a>
 
-            <a href="rules_game.html" class="nav-card">
+            <a href="rules_game.xhtml" class="index-btn">
                 <div class="nav-icon">📋</div>
-                <h2>Правила Игры</h2>
-                <p>Основные правила и механики игры Мафия</p>
+                <div>Правила Игры</div>
             </a>
 
-            <a href="rules_chat.html" class="nav-card">
+            <a href="rules_chat.xhtml" class="index-btn">
                 <div class="nav-icon">💬</div>
-                <h2>Правила Общения</h2>
-                <p>Правила поведения в игровом чате</p>
+                <div>Правила Общения</div>
             </a>
 
-            <a href="moder.html" class="nav-card">
+            <a href="moder.xhtml" class="index-btn">
                 <div class="nav-icon">👮</div>
-                <h2>Гайды Модеров</h2>
-                <p>Инструкции для модераторов чата</p>
+                <div>Гайды Модеров</div>
             </a>
         </div>
     </main>
 
-    <footer>
-        <p>&copy; 2025 Mafioso Official Community | Фанатский проект</p>
-        <a href="https://t.me/mafiosoHelp">Инфо о сайте</a>
-        <a href="https://t.me/hoge_forever">Владелец сайта</a>
+    <footer class="index-footer">
+        <p>© 2025 Mafioso Official Community | Фанатский проект</p>
+        <p>
+            <a href="https://t.me/mafiosoHelp">Инфо о сайте</a>
+            <a href="https://t.me/hoge_forever">Владелец сайта</a>
+        </p>
     </footer>
 
-    <script>
+    <script type="text/javascript">
         // Создаем частицы для фона
-        const particlesContainer = document.getElementById('particles');
-        for (let i = 0; i < 50; i++) {
-            const particle = document.createElement('div');
+        var particlesContainer = document.getElementById('particles');
+        for (var i = 0; i < 50; i++) {
+            var particle = document.createElement('div');
             particle.className = 'particle';
             particle.style.left = Math.random() * 100 + '%';
             particle.style.animationDelay = Math.random() * 15 + 's';
