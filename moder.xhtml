@@ -2,10 +2,70 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-  <meta charset="UTF-8"/>
-  <title>Гайды в боте Essentials</title>
-  <link rel="stylesheet" type="text/css"  href="styles.css"/>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <title>Гайды в боте Essentials</title>
+  <link rel="stylesheet" type="text/css" href="styles.css" />
 </head>
-  <div class="main-menu-btn-container">
-    <a href="index.xhtml" class="back-btn">⬅ Главное меню</a>
-  </div>
+<body>
+  <div class="main-menu-btn-container">
+    <a href="index.xhtml" class="back-btn">⬅ Главное меню</a>
+  </div>
+
+  <div class="container">
+    <h2>Essentials</h2>
+    <p>В данной странице можете узнать, как пользоваться Essentials.</p>
+
+    <h3>Как выдавать молчанку/блокировку (мут/бан)?</h3>
+    <p>Используйте команду:</p>
+    <p class="code">/mute [время] [ID/username] [ссылка на нарушение] [причина]</p>
+
+    <h4>Примеры выдачи наказаний:</h4>
+    <div class="example-box">
+        <p><strong>Пример 1. Успешно выданный мут:</strong></p>
+                <p><img src="images/primer1_uspeshno.png" alt="Пример 1: Успешно выданный мут" class="example-img" /></p>
+    </div>
+    <div class="example-box">
+        <p><strong>Пример 2. Ошибка:</strong></p>
+                <p><img src="images/primer2_oshibka.png" alt="Пример 2: Ошибка выдачи мута" class="example-img" /></p>
+        <p>Бот не смог выдать наказание, поскольку в сообщениях, на которые указывала ссылка, **отсутствовала ссылка на нарушителя**.</p>
+        <p>То есть: Ник нарушителя был некликабельным (в сообщении нет ссылки на нарушителя).</p>
+        <p><strong>Что делать в таких ситуациях?</strong></p>
+        <p>Попробовать найти сообщения либо найти сообщения от бота, где ник нарушителя кликабельный.</p>
+                <p><img src="images/primer2_reshenie.png" alt="Примеры, как найти кликабельный ник" class="example-img" /></p>
+    </div>
+
+    <hr />
+
+    <h3>Как писать сообщения через бота? (/bc)</h3>
+    <ul>
+      <li>Если в самом чате:</li>
+      <p class="code">/bc this [сообщение]</p>
+      <p>Можно использовать реплаем (работает только на сообщение от людей).</p>
+
+      <li>Через другой чат:</li>
+      <p class="code">/bc [ссылка на чат где будет отправлено сообщение]</p>
+
+      <li>Отправить анонимное сообщение (без ника, только с префиксом бота):</li>
+      <p class="code">/bc -h this hello world</p>
+
+      <li>Отправить сообщение, где перед ником будет выбранный смайлик:</li>
+      <p class="code">/bc -e 😭 this hello world</p>
+    </ul>
+
+    <hr />
+
+    <h3>Как работать с сообщениями в чате? (/message)</h3>
+    <p>Общая команда: <code>/message del/pin/unpin</code></p>
+    <ul>
+      <li><strong>Удалить сообщение:</strong></li>
+      <p class="code">/message del/delete [ссылка на сообщение]</p>
+
+      <li><strong>Закрепить/открепить сообщение:</strong></li>
+      <p class="code">/message pin/unpin [ссылка на сообщение]</p>
+    </ul>
+        <p>Где примеры ссылка на фото:</p>
+    <p><img src="images/message_commands.png" alt="Примеры команд /message del/pin/unpin" class="example-img" /></p>
+
+  </div>
+</body>
+</html>
