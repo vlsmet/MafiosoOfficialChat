@@ -290,3 +290,151 @@ hr {
     border-top: 1px solid #eee;
     margin: 20px 0;
 }
+/* Общие стили для тела и контейнера */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+    color: #333;
+    margin: 0;
+    padding: 20px;
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Стили заголовков фракций */
+.peace-h2 {
+    color: #4CAF50; /* Зеленый для Мирных */
+    border-bottom: 2px solid #4CAF50;
+    padding-bottom: 10px;
+}
+
+.mafia-h2 {
+    color: #d32f2f; /* Красный для Мафии */
+    border-bottom: 2px solid #d32f2f;
+    padding-bottom: 10px;
+}
+
+.neutral-h2 {
+    color: #5d4037; /* Коричневый/темный для Нейтралов */
+    border-bottom: 2px solid #5d4037;
+    padding-bottom: 10px;
+}
+
+/* Стили для общих заголовков (например, в Гайдах) */
+h2 {
+    color: #1976D2;
+    border-bottom: 2px solid #1976D2;
+    padding-bottom: 10px;
+    margin-top: 0;
+}
+
+/* Стили для карточек ролей */
+.role-box {
+    padding: 15px;
+    margin-bottom: 15px;
+    border-left: 5px solid;
+    border-radius: 4px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.role-h3 {
+    display: flex;
+    align-items: center;
+    margin-top: 0;
+    margin-bottom: 10px;
+    font-size: 1.2em;
+}
+
+.role-icon {
+    width: 24px;
+    height: 24px;
+    margin-right: 10px;
+}
+
+.role-p {
+    margin: 5px 0;
+    padding-left: 35px;
+}
+
+/* Цветовая кодировка карточек по фракциям */
+.peace-role-box {
+    border-left-color: #4CAF50;
+    background-color: #e8f5e9;
+}
+
+.mafia-role-box {
+    border-left-color: #d32f2f;
+    background-color: #ffebee;
+}
+
+.neutral-role-box {
+    border-left-color: #5d4037;
+    background-color: #efebe9;
+}
+
+/* Кнопка "Главное меню" */
+.main-menu-btn-container {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.back-btn {
+    display: inline-block;
+    padding: 10px 15px;
+    background-color: #607D8B;
+    color: white;
+    text-decoration: none;
+    border-radius: 4px;
+    transition: background-color 0.3s;
+}
+
+.back-btn:hover {
+    background-color: #455A64;
+}
+
+/* Стили для примеров в Гайдах Essentials */
+.code {
+    font-family: monospace;
+    background-color: #eee;
+    padding: 5px 8px;
+    border-radius: 3px;
+    display: inline-block;
+    margin: 5px 0;
+    color: #c2185b;
+}
+
+.example-box {
+    border: 1px dashed #ccc;
+    padding: 10px;
+    margin-bottom: 15px;
+    background-color: #fafafa;
+    /* ИСПРАВЛЕНИЕ: Гарантируем, что текст внутри блока будет темным */
+    color: #333; 
+}
+
+.example-img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 10px 0;
+}
+
+.example-img.two-col {
+    max-width: 48%;
+    display: inline-block;
+    margin-right: 2%;
+    vertical-align: top;
+}
+
+hr {
+    border: 0;
+    border-top: 1px solid #eee;
+    margin: 20px 0;
+}
