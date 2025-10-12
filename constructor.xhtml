@@ -345,24 +345,12 @@
                     
                     <div class="form-row">
                         <div class="form-group">
-                            <label class="form-label">Эмоджи роли</label>
-                            <select id="roleEmoji" class="form-select emoji-select">
-                                <option value="🎭">🎭</option>
-                                <option value="🕵️">🕵️</option>
-                                <option value="👮">👮</option>
-                                <option value="🧙">🧙</option>
-                                <option value="🦸">🦸</option>
-                                <option value="🤡">🤡</option>
-                                <option value="👻">👻</option>
-                                <option value="☠️">☠️</option>
-                                <option value="💀">💀</option>
-                                <option value="🎃">🎃</option>
-                                <option value="👹">👹</option>
-                                <option value="👺">👺</option>
-                                <option value="🤖">🤖</option>
-                                <option value="👽">👽</option>
-                                <option value="🧛">🧛</option>
-                            </select>
+                            <label class="form-label">Эмоджи роли (стандартный)</label>
+                            <input type="text" id="roleEmoji" class="form-input" placeholder="🎭" style="font-size: 1.5rem; text-align: center;"/>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Custom Emoji ID (премиум)</label>
+                            <input type="number" id="customEmojiId" class="form-input" placeholder="Оставьте пустым если не премиум"/>
                         </div>
                     </div>
                     
@@ -564,22 +552,49 @@
                 '</div>' +
                 '<div class="section-divider">' +
                 '<p style="color: #4a90e2; font-weight: 600; margin-bottom: 0.5rem;">📤 Сообщения процесса</p>' +
-                '<input type="text" class="form-input action-process-msg" placeholder="Сообщение выбора цели" style="margin-bottom: 0.5rem;"/>' +
+                '<input type="text" class="form-input action-process-msg" placeholder="Текст выбора действия (msg)" style="margin-bottom: 0.5rem;"/>' +
+                '<input type="text" class="form-input action-process-pm" placeholder="Текст пропуска действия (msg_pm)" style="margin-bottom: 0.5rem;"/>' +
+                '<input type="text" class="form-input action-process-chat" placeholder="Сообщение пропуска действия в игровом чате (msg_chat)"/>' +
                 '</div>' +
                 '<div class="section-divider">' +
                 '<p style="color: #28a745; font-weight: 600; margin-bottom: 0.5rem;">✅ Успешное выполнение</p>' +
-                '<input type="text" class="form-input action-success-msg" placeholder="Сообщение в чат" style="margin-bottom: 0.5rem;"/>' +
-                '<input type="text" class="form-input action-success-victim" placeholder="Сообщение жертве" style="margin-bottom: 0.5rem;"/>' +
-                '<input type="text" class="form-input action-success-actor" placeholder="Сообщение исполнителю"/>' +
+                '<div class="form-group">' +
+                '<label class="form-label" style="color: #ccc;">Изменить роль при успехе:</label>' +
+                '<select class="form-select action-switch-type" style="margin-bottom: 0.5rem;">' +
+                '<option value="">Не менять роль</option>' +
+                '<option value="victim">На роль жертвы</option>' +
+                '<option value="role_id">На конкретную роль (ID)</option>' +
+                '</select>' +
+                '<input type="number" class="form-input action-switch-role-id" placeholder="ID роли" style="display: none; margin-bottom: 0.5rem;"/>' +
+                '</div>' +
+                '<input type="text" class="form-input action-success-msg" placeholder="Текст о выполнении хода в личных сообщениях" style="margin-bottom: 0.5rem;"/>' +
+                '<input type="text" class="form-input action-success-chat" placeholder="Сообщение о выполнении хода в общем чате" style="margin-bottom: 0.5rem;"/>' +
+                '<input type="text" class="form-input action-success-victim" placeholder="Сообщение об успешном действии жертве" style="margin-bottom: 0.5rem;"/>' +
+                '<input type="text" class="form-input action-success-actor" placeholder="Сообщение об успешном действии исполнителю"/>' +
                 '</div>' +
                 '<div class="section-divider">' +
                 '<p style="color: #dc3545; font-weight: 600; margin-bottom: 0.5rem;">❌ Неудачное выполнение</p>' +
-                '<input type="text" class="form-input action-failed-msg" placeholder="Сообщение в чат" style="margin-bottom: 0.5rem;"/>' +
-                '<input type="text" class="form-input action-failed-actor" placeholder="Сообщение исполнителю"/>' +
+                '<input type="text" class="form-input action-failed-msg" placeholder="Текст о выполнении хода в личных сообщениях" style="margin-bottom: 0.5rem;"/>' +
+                '<input type="text" class="form-input action-failed-chat" placeholder="Сообщение о выполнении хода в общем чате" style="margin-bottom: 0.5rem;"/>' +
+                '<input type="text" class="form-input action-failed-victim" placeholder="Сообщение о провальном действии жертве" style="margin-bottom: 0.5rem;"/>' +
+                '<input type="text" class="form-input action-failed-actor" placeholder="Сообщение о провальном действии исполнителю"/>' +
                 '</div>' +
                 '</div>';
             
             container.innerHTML += actionHtml;
+            
+            // Добавляем обработчик для переключения switch_type
+            var switchSelect = document.getElementById('action' + actionCounter).querySelector('.action-switch-type');
+            var roleIdInput = document.getElementById('action' + actionCounter).querySelector('.action-switch-role-id');
+            
+            switchSelect.addEventListener('change', function() {
+                if (this.value === 'role_id') {
+                    roleIdInput.style.display = 'block';
+                } else {
+                    roleIdInput.style.display = 'none';
+                }
+            });
+            
             updateStats();
             updatePreview();
         }
@@ -605,39 +620,106 @@
             
             for (var i = 0; i < actionCards.length; i++) {
                 var card = actionCards[i];
-                actions.push({
+                var actionType = card.querySelector('.action-type').value;
+                var typeObj;
+                
+                // Создаем правильный объект типа в зависимости от выбора
+                if (actionType === 'RoleActionTypeKill') {
+                    typeObj = { ID: 'RoleActionTypeKill' };
+                } else if (actionType === 'RoleActionTypeHealing') {
+                    typeObj = { ID: 'RoleActionTypeHealing' };
+                } else if (actionType === 'RoleActionTypeFreeze') {
+                    var isForce = card.querySelector('.action-freeze-force').value === 'true';
+                    typeObj = { 
+                        ID: 'RoleActionTypeFreeze',
+                        is_force: isForce
+                    };
+                } else {
+                    typeObj = { ID: 'RoleActionTypeEmpty' };
+                }
+                
+                // role_allowed и role_freeze
+                var roleAllowedInput = card.querySelector('.action-role-allowed').value;
+                var roleFreezeInput = card.querySelector('.action-role-freeze').value;
+                var isBlacklist = card.querySelector('.action-blacklist').checked;
+                
+                var roleAllowed = null;
+                var roleFreeze = null;
+                
+                if (roleAllowedInput) {
+                    var roleIds = roleAllowedInput.split(',').map(function(id) { return parseInt(id.trim()); });
+                    if (isBlacklist) {
+                        roleAllowed = { ID: 'RoleListTypeBlackList', role_ids: roleIds };
+                    } else {
+                        roleAllowed = { ID: 'RoleListTypeWhiteList', role_ids: roleIds };
+                    }
+                }
+                
+                if (roleFreezeInput) {
+                    var freezeIds = roleFreezeInput.split(',').map(function(id) { return parseInt(id.trim()); });
+                    roleFreeze = { ID: 'RoleListTypeWhiteList', role_ids: freezeIds };
+                }
+                
+                // switch_role
+                var switchType = card.querySelector('.action-switch-type').value;
+                var switchRole = null;
+                
+                if (switchType === 'victim') {
+                    switchRole = { ID: 'RoleSwitchToVictimRole' };
+                } else if (switchType === 'role_id') {
+                    var roleId = parseInt(card.querySelector('.action-switch-role-id').value);
+                    if (roleId) {
+                        switchRole = { ID: 'RoleSwitchToRoleId', role_id: roleId };
+                    }
+                }
+                
+                var actionObj = {
                     name: card.querySelector('.action-name').value || 'Новое действие',
-                    type: card.querySelector('.action-type').value,
+                    type: typeObj,
                     count_victims: parseInt(card.querySelector('.action-victims').value) || 1,
                     cooldown: parseInt(card.querySelector('.action-cooldown').value) || 0,
                     process: {
                         msg: card.querySelector('.action-process-msg').value || '',
-                        msg_pm: '',
-                        msg_chat: ''
+                        msg_pm: card.querySelector('.action-process-pm').value || '',
+                        msg_chat: card.querySelector('.action-process-chat').value || ''
                     },
                     success: {
+                        switch_role: switchRole,
                         msg: card.querySelector('.action-success-msg').value || '',
                         msg_victim: card.querySelector('.action-success-victim').value || '',
                         msg_actor: card.querySelector('.action-success-actor').value || ''
                     },
                     failed: {
                         msg: card.querySelector('.action-failed-msg').value || '',
-                        msg_victim: '',
+                        msg_victim: card.querySelector('.action-failed-victim').value || '',
                         msg_actor: card.querySelector('.action-failed-actor').value || ''
                     }
-                });
+                };
+                
+                if (roleAllowed) actionObj.role_allowed = roleAllowed;
+                if (roleFreeze) actionObj.role_freeze = roleFreeze;
+                
+                actions.push(actionObj);
+            }
+            
+            var customEmojiId = document.getElementById('customEmojiId').value;
+            var emojiObj = {
+                emoji: document.getElementById('roleEmoji').value || '🎭'
+            };
+            
+            // Добавляем custom_emoji_id только если указан
+            if (customEmojiId) {
+                emojiObj.custom_emoji_id = parseInt(customEmojiId);
             }
             
             return {
                 ID: 'Role',
                 name: {
                     name: document.getElementById('roleName').value || 'Новая роль',
-                    emoji: {
-                        emoji: document.getElementById('roleEmoji').value
-                    }
+                    emoji: emojiObj
                 },
                 description: document.getElementById('roleDescription').value || '',
-                fraction: selectedFaction,
+                fraction: { ID: selectedFaction },
                 cash_award: parseInt(document.getElementById('cashAward').value) || 0,
                 required_players: parseInt(document.getElementById('requiredPlayers').value) || 5,
                 weight_vote: parseInt(document.getElementById('weightVote').value) || 1,
@@ -695,6 +777,7 @@
             if (confirm('Вы уверены? Все данные будут удалены.')) {
                 document.getElementById('roleName').value = '';
                 document.getElementById('roleEmoji').value = '🎭';
+                document.getElementById('customEmojiId').value = '';
                 document.getElementById('roleDescription').value = '';
                 document.getElementById('cashAward').value = '0';
                 document.getElementById('requiredPlayers').value = '5';
@@ -729,7 +812,8 @@
 
         function updatePreview() {
             var roleName = document.getElementById('roleName').value || 'Без названия';
-            var roleEmoji = document.getElementById('roleEmoji').value;
+            var roleEmoji = document.getElementById('roleEmoji').value || '🎭';
+            var customEmojiId = document.getElementById('customEmojiId').value;
             var roleDescription = document.getElementById('roleDescription').value;
             var actionsCount = document.querySelectorAll('.action-card').length;
             
@@ -740,12 +824,18 @@
                 'RoleFractonKiller': '🔪 Фракция убийцы'
             };
             
+            var emojiDisplay = roleEmoji;
+            if (customEmojiId) {
+                emojiDisplay = roleEmoji + ' (Premium: ' + customEmojiId + ')';
+            }
+            
             var html = '<div style="background: rgba(0,0,0,0.3); padding: 1rem; border-radius: 10px; margin-bottom: 1rem;">' +
                 '<div style="display: flex; align-items: center; gap: 1rem;">' +
                 '<span style="font-size: 3rem;">' + roleEmoji + '</span>' +
                 '<div>' +
                 '<p style="font-size: 1.2rem; font-weight: bold; color: #fff;">' + roleName + '</p>' +
                 '<p style="color: #888; font-size: 0.9rem;">' + fractionNames[selectedFaction] + '</p>' +
+                (customEmojiId ? '<p style="color: #ffd700; font-size: 0.8rem;">Premium Emoji ID: ' + customEmojiId + '</p>' : '') +
                 '</div>' +
                 '</div>' +
                 '</div>';
