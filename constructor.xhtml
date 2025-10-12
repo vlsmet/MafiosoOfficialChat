@@ -1,0 +1,787 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Конструктор Ролей - Mafioso Official</title>
+    <link rel="stylesheet" type="text/css" href="styles.css"/>
+    <style type="text/css">
+        body {
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+            min-height: 100vh;
+        }
+        
+        .constructor-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 2rem;
+            position: relative;
+            z-index: 10;
+        }
+        
+        .constructor-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .form-section {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+        }
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-label {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: #e8e8e8;
+            font-size: 0.95rem;
+        }
+        
+        .form-input, .form-textarea, .form-select {
+            width: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 8px;
+            padding: 0.75rem;
+            color: #e8e8e8;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+        
+        .form-input:focus, .form-textarea:focus, .form-select:focus {
+            outline: none;
+            border-color: #dc3545;
+            background: rgba(0, 0, 0, 0.6);
+            box-shadow: 0 0 10px rgba(220, 53, 69, 0.3);
+        }
+        
+        .form-textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+        
+        .form-row {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+        }
+        
+        .faction-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+        }
+        
+        .faction-btn {
+            padding: 1rem;
+            border: 2px solid rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            background: rgba(255, 255, 255, 0.03);
+            color: #e8e8e8;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 1rem;
+        }
+        
+        .faction-btn:hover {
+            background: rgba(255, 255, 255, 0.08);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(220, 53, 69, 0.2);
+        }
+        
+        .faction-btn.active {
+            border-color: #dc3545;
+            background: rgba(220, 53, 69, 0.15);
+            box-shadow: 0 0 20px rgba(220, 53, 69, 0.3);
+        }
+        
+        .checkbox-group {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: rgba(0, 0, 0, 0.4);
+            padding: 1rem;
+            border-radius: 8px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .checkbox-group:hover {
+            background: rgba(0, 0, 0, 0.5);
+            border-color: rgba(220, 53, 69, 0.3);
+        }
+        
+        .checkbox-group input {
+            width: 20px;
+            height: 20px;
+            cursor: pointer;
+        }
+        
+        .action-card {
+            background: rgba(0, 0, 0, 0.4);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-left: 4px solid #dc3545;
+            border-radius: 10px;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+            transition: all 0.3s ease;
+        }
+        
+        .action-card:hover {
+            transform: translateX(5px);
+            box-shadow: 0 12px 40px rgba(220, 53, 69, 0.2);
+        }
+        
+        .action-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+        
+        .action-title {
+            font-size: 1.3rem;
+            color: #ffd700;
+            font-weight: bold;
+        }
+        
+        .btn {
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 1rem;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+        }
+        
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+        }
+        
+        .btn-primary {
+            background: linear-gradient(135deg, #dc3545, #c82333);
+            color: white;
+        }
+        
+        .btn-primary:hover {
+            background: linear-gradient(135deg, #c82333, #bd2130);
+            box-shadow: 0 6px 20px rgba(220, 53, 69, 0.4);
+        }
+        
+        .btn-success {
+            background: linear-gradient(135deg, #28a745, #218838);
+            color: white;
+        }
+        
+        .btn-success:hover {
+            background: linear-gradient(135deg, #218838, #1e7e34);
+            box-shadow: 0 6px 20px rgba(40, 167, 69, 0.4);
+        }
+        
+        .btn-danger {
+            background: linear-gradient(135deg, #dc3545, #c82333);
+            color: white;
+            padding: 0.5rem 1rem;
+        }
+        
+        .btn-secondary {
+            background: linear-gradient(135deg, #6c757d, #5a6268);
+            color: white;
+            padding: 0.5rem 1rem;
+        }
+        
+        .sidebar {
+            position: sticky;
+            top: 2rem;
+        }
+        
+        .preview-box {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+            transition: all 0.3s ease;
+        }
+        
+        .preview-box:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 40px rgba(220, 53, 69, 0.2);
+        }
+        
+        .preview-title {
+            font-size: 1.3rem;
+            font-weight: bold;
+            color: #ffd700;
+            margin-bottom: 1rem;
+            text-shadow: 0 0 10px rgba(255, 215, 0, 0.3);
+        }
+        
+        .json-output {
+            background: rgba(0, 0, 0, 0.7);
+            border: 1px solid rgba(40, 167, 69, 0.3);
+            border-radius: 8px;
+            padding: 1rem;
+            color: #28a745;
+            font-family: 'Courier New', monospace;
+            font-size: 0.85rem;
+            max-height: 400px;
+            overflow: auto;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            box-shadow: inset 0 2px 10px rgba(0, 0, 0, 0.5);
+        }
+        
+        .stats-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 0.75rem 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            color: #b8b8b8;
+            transition: all 0.3s ease;
+        }
+        
+        .stats-item:hover {
+            color: #e8e8e8;
+            padding-left: 0.5rem;
+        }
+        
+        .stats-item:last-child {
+            border-bottom: none;
+        }
+        
+        .section-divider {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 1rem;
+            margin-top: 1rem;
+        }
+        
+        .emoji-select {
+            font-size: 2rem;
+            text-align: center;
+            background: rgba(0, 0, 0, 0.5);
+        }
+        
+        .constructor-header {
+            text-align: center;
+            margin-bottom: 2rem;
+            padding: 2rem;
+            background: rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .constructor-header h1 {
+            font-size: 2.5rem;
+            background: linear-gradient(135deg, #dc3545, #c82333, #bd2130);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-shadow: 0 0 30px rgba(220, 53, 69, 0.5);
+            margin-bottom: 0.5rem;
+            font-weight: 900;
+            letter-spacing: 2px;
+        }
+        
+        .constructor-header p {
+            color: #b8b8b8;
+            font-size: 1.1rem;
+        }
+        
+        @media (max-width: 1024px) {
+            .constructor-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .sidebar {
+                position: static;
+            }
+        }
+    </style>
+</head>
+<body class="index-body">
+    <div class="main-menu-btn-container">
+        <a href="index.xhtml" class="back-btn">⬅ Главное меню</a>
+    </div>
+
+    <div class="constructor-container">
+        <header class="constructor-header">
+            <h1>🎭 КОНСТРУКТОР РОЛЕЙ MAFIOSO 🎭</h1>
+            <p>Создайте свою уникальную роль для игры</p>
+        </header>
+
+        <div class="constructor-grid">
+            <!-- Main Form -->
+            <div>
+                <!-- Basic Info -->
+                <div class="form-section">
+                    <h2 style="color: #dc3545; margin-bottom: 1.5rem; font-size: 1.8rem;">📋 Основная информация</h2>
+                    
+                    <div class="form-row">
+                        <div class="form-group" style="grid-column: 1 / -1;">
+                            <label class="form-label">Название роли</label>
+                            <input type="text" id="roleName" class="form-input" placeholder="Введите название роли"/>
+                        </div>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label class="form-label">Эмоджи роли</label>
+                            <select id="roleEmoji" class="form-select emoji-select">
+                                <option value="🎭">🎭</option>
+                                <option value="🕵️">🕵️</option>
+                                <option value="👮">👮</option>
+                                <option value="🧙">🧙</option>
+                                <option value="🦸">🦸</option>
+                                <option value="🤡">🤡</option>
+                                <option value="👻">👻</option>
+                                <option value="☠️">☠️</option>
+                                <option value="💀">💀</option>
+                                <option value="🎃">🎃</option>
+                                <option value="👹">👹</option>
+                                <option value="👺">👺</option>
+                                <option value="🤖">🤖</option>
+                                <option value="👽">👽</option>
+                                <option value="🧛">🧛</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label">Описание роли</label>
+                        <textarea id="roleDescription" class="form-textarea" placeholder="Опишите способности и задачи роли"></textarea>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label">Фракция</label>
+                        <div class="faction-grid">
+                            <button type="button" class="faction-btn active" data-faction="RoleFractonPeace" onclick="selectFaction(this)">
+                                🌿 Мирная фракция
+                            </button>
+                            <button type="button" class="faction-btn" data-faction="RoleFractonMafia" onclick="selectFaction(this)">
+                                🕶 Фракция мафии
+                            </button>
+                            <button type="button" class="faction-btn" data-faction="RoleFractonNeutral" onclick="selectFraction(this)">
+                                ⚖️ Нейтральная
+                            </button>
+                            <button type="button" class="faction-btn" data-faction="RoleFractonKiller" onclick="selectFaction(this)">
+                                🔪 Убийца
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label class="form-label">Награда (₽)</label>
+                            <input type="number" id="cashAward" class="form-input" value="0" min="0"/>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Мин. игроков</label>
+                            <input type="number" id="requiredPlayers" class="form-input" value="5" min="1"/>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Вес голоса</label>
+                            <input type="number" id="weightVote" class="form-input" value="1" min="1"/>
+                        </div>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="checkbox-group">
+                            <input type="checkbox" id="revengeKill"/>
+                            <label for="revengeKill">☠️ Месть убийце</label>
+                        </div>
+                        <div class="checkbox-group">
+                            <input type="checkbox" id="enabled" checked="checked"/>
+                            <label for="enabled">✅ Роль активна</label>
+                        </div>
+                    </div>
+                    
+                    <div class="section-divider">
+                        <div class="form-group">
+                            <label class="form-label">Сообщение выбора действия</label>
+                            <input type="text" id="msgSelectAction" class="form-input" value="Выберите действие"/>
+                        </div>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label class="form-label">Текст кнопки пропуска</label>
+                                <input type="text" id="skipBtnName" class="form-input" value="Пропустить ход"/>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Сообщение пропуска</label>
+                                <input type="text" id="skipMessage" class="form-input" value="Игрок пропустил ход"/>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Actions Section -->
+                <div class="form-section">
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem;">
+                        <h2 style="color: #dc3545; font-size: 1.8rem;">⚡ Действия роли</h2>
+                        <button type="button" class="btn btn-primary" onclick="addAction()">➕ Добавить действие</button>
+                    </div>
+                    
+                    <div id="actionsContainer">
+                        <p style="text-align: center; color: #888; padding: 2rem;">Нет добавленных действий. Нажмите "Добавить действие"</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Sidebar -->
+            <div class="sidebar">
+                <!-- API Config -->
+                <div class="preview-box">
+                    <h3 class="preview-title">⚙️ API Конфигурация</h3>
+                    <div class="form-group">
+                        <label class="form-label">Chat ID</label>
+                        <input type="text" id="chatId" class="form-input" placeholder="-1001234567890"/>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Role ID (для редактирования)</label>
+                        <input type="text" id="roleId" class="form-input" placeholder="123"/>
+                    </div>
+                </div>
+
+                <!-- Actions -->
+                <div class="preview-box">
+                    <h3 class="preview-title">🛠️ Действия</h3>
+                    <button type="button" class="btn btn-success" onclick="generateAddNew()" style="width: 100%; margin-bottom: 0.5rem;">
+                        📋 Создать новую роль
+                    </button>
+                    <button type="button" class="btn btn-primary" onclick="generateEdit()" style="width: 100%; margin-bottom: 0.5rem;">
+                        💾 Редактировать роль
+                    </button>
+                    <button type="button" class="btn btn-secondary" onclick="resetForm()" style="width: 100%;">
+                        🔄 Очистить форму
+                    </button>
+                </div>
+
+                <!-- JSON Output -->
+                <div class="preview-box" id="jsonPreviewBox" style="display: none;">
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+                        <h3 class="preview-title" style="margin: 0;">📋 JSON Output</h3>
+                        <button type="button" class="btn btn-secondary" onclick="copyJson()" style="padding: 0.5rem 1rem;">
+                            📄 Копировать
+                        </button>
+                    </div>
+                    <div class="json-output" id="jsonOutput"></div>
+                </div>
+
+                <!-- Preview -->
+                <div class="preview-box">
+                    <h3 class="preview-title">👁️ Предпросмотр</h3>
+                    <div id="rolePreview" style="color: #888; text-align: center;">
+                        Заполните форму для предпросмотра
+                    </div>
+                </div>
+
+                <!-- Stats -->
+                <div class="preview-box">
+                    <h3 class="preview-title">📊 Статистика</h3>
+                    <div id="statsContainer">
+                        <div class="stats-item">
+                            <span>Всего действий:</span>
+                            <span id="statActions">0</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script type="text/javascript">
+    <![CDATA[
+        var actionCounter = 0;
+        var selectedFaction = 'RoleFractonPeace';
+
+        function selectFaction(btn) {
+            var buttons = document.querySelectorAll('.faction-btn');
+            for (var i = 0; i < buttons.length; i++) {
+                buttons[i].classList.remove('active');
+            }
+            btn.classList.add('active');
+            selectedFaction = btn.getAttribute('data-faction');
+            updatePreview();
+        }
+
+        function addAction() {
+            actionCounter++;
+            var container = document.getElementById('actionsContainer');
+            
+            if (container.querySelector('p')) {
+                container.innerHTML = '';
+            }
+            
+            var actionHtml = '<div class="action-card" id="action' + actionCounter + '">' +
+                '<div class="action-header">' +
+                '<span class="action-title">Действие #' + actionCounter + '</span>' +
+                '<button type="button" class="btn btn-danger" onclick="removeAction(' + actionCounter + ')">🗑️ Удалить</button>' +
+                '</div>' +
+                '<div class="form-row">' +
+                '<div class="form-group">' +
+                '<label class="form-label">Название действия</label>' +
+                '<input type="text" class="form-input action-name" placeholder="Название действия"/>' +
+                '</div>' +
+                '<div class="form-group">' +
+                '<label class="form-label">Тип действия</label>' +
+                '<select class="form-select action-type">' +
+                '<option value="RoleActionTypeKill">🔪 Убить</option>' +
+                '<option value="RoleActionTypeHealing">💚 Вылечить</option>' +
+                '<option value="RoleActionTypeFreeze">❄️ Заморозить</option>' +
+                '<option value="RoleActionTypeEmpty">⭕ Пустой ход</option>' +
+                '</select>' +
+                '</div>' +
+                '</div>' +
+                '<div class="form-row">' +
+                '<div class="form-group">' +
+                '<label class="form-label">Количество целей</label>' +
+                '<input type="number" class="form-input action-victims" value="1" min="1"/>' +
+                '</div>' +
+                '<div class="form-group">' +
+                '<label class="form-label">Кулдаун (ночей)</label>' +
+                '<input type="number" class="form-input action-cooldown" value="0" min="0"/>' +
+                '</div>' +
+                '</div>' +
+                '<div class="section-divider">' +
+                '<p style="color: #4a90e2; font-weight: 600; margin-bottom: 0.5rem;">📤 Сообщения процесса</p>' +
+                '<input type="text" class="form-input action-process-msg" placeholder="Сообщение выбора цели" style="margin-bottom: 0.5rem;"/>' +
+                '</div>' +
+                '<div class="section-divider">' +
+                '<p style="color: #28a745; font-weight: 600; margin-bottom: 0.5rem;">✅ Успешное выполнение</p>' +
+                '<input type="text" class="form-input action-success-msg" placeholder="Сообщение в чат" style="margin-bottom: 0.5rem;"/>' +
+                '<input type="text" class="form-input action-success-victim" placeholder="Сообщение жертве" style="margin-bottom: 0.5rem;"/>' +
+                '<input type="text" class="form-input action-success-actor" placeholder="Сообщение исполнителю"/>' +
+                '</div>' +
+                '<div class="section-divider">' +
+                '<p style="color: #dc3545; font-weight: 600; margin-bottom: 0.5rem;">❌ Неудачное выполнение</p>' +
+                '<input type="text" class="form-input action-failed-msg" placeholder="Сообщение в чат" style="margin-bottom: 0.5rem;"/>' +
+                '<input type="text" class="form-input action-failed-actor" placeholder="Сообщение исполнителю"/>' +
+                '</div>' +
+                '</div>';
+            
+            container.innerHTML += actionHtml;
+            updateStats();
+            updatePreview();
+        }
+
+        function removeAction(id) {
+            var element = document.getElementById('action' + id);
+            if (element) {
+                element.remove();
+            }
+            
+            var container = document.getElementById('actionsContainer');
+            if (!container.querySelector('.action-card')) {
+                container.innerHTML = '<p style="text-align: center; color: #888; padding: 2rem;">Нет добавленных действий. Нажмите "Добавить действие"</p>';
+            }
+            
+            updateStats();
+            updatePreview();
+        }
+
+        function collectRoleData() {
+            var actions = [];
+            var actionCards = document.querySelectorAll('.action-card');
+            
+            for (var i = 0; i < actionCards.length; i++) {
+                var card = actionCards[i];
+                actions.push({
+                    name: card.querySelector('.action-name').value || 'Новое действие',
+                    type: card.querySelector('.action-type').value,
+                    count_victims: parseInt(card.querySelector('.action-victims').value) || 1,
+                    cooldown: parseInt(card.querySelector('.action-cooldown').value) || 0,
+                    process: {
+                        msg: card.querySelector('.action-process-msg').value || '',
+                        msg_pm: '',
+                        msg_chat: ''
+                    },
+                    success: {
+                        msg: card.querySelector('.action-success-msg').value || '',
+                        msg_victim: card.querySelector('.action-success-victim').value || '',
+                        msg_actor: card.querySelector('.action-success-actor').value || ''
+                    },
+                    failed: {
+                        msg: card.querySelector('.action-failed-msg').value || '',
+                        msg_victim: '',
+                        msg_actor: card.querySelector('.action-failed-actor').value || ''
+                    }
+                });
+            }
+            
+            return {
+                ID: 'Role',
+                name: {
+                    name: document.getElementById('roleName').value || 'Новая роль',
+                    emoji: {
+                        emoji: document.getElementById('roleEmoji').value
+                    }
+                },
+                description: document.getElementById('roleDescription').value || '',
+                fraction: selectedFaction,
+                cash_award: parseInt(document.getElementById('cashAward').value) || 0,
+                required_players: parseInt(document.getElementById('requiredPlayers').value) || 5,
+                weight_vote: parseInt(document.getElementById('weightVote').value) || 1,
+                revenge_kill: document.getElementById('revengeKill').checked,
+                enabled: document.getElementById('enabled').checked,
+                msg_select_action: document.getElementById('msgSelectAction').value || 'Выберите действие',
+                msg_skip: {
+                    btn_name: document.getElementById('skipBtnName').value || 'Пропустить ход',
+                    message: document.getElementById('skipMessage').value || 'Игрок пропустил ход'
+                },
+                actions: actions
+            };
+        }
+
+        function generateAddNew() {
+            var roleData = collectRoleData();
+            var chatId = document.getElementById('chatId').value;
+            
+            var apiRequest = {
+                ID: 'AddNewCustomRole',
+                chat_id: parseInt(chatId) || 0,
+                role: roleData
+            };
+            
+            var json = JSON.stringify(apiRequest, null, 2);
+            document.getElementById('jsonOutput').textContent = json;
+            document.getElementById('jsonPreviewBox').style.display = 'block';
+        }
+
+        function generateEdit() {
+            var roleData = collectRoleData();
+            var chatId = document.getElementById('chatId').value;
+            var roleId = document.getElementById('roleId').value;
+            
+            var apiRequest = {
+                ID: 'EditCustomRole',
+                chat_id: parseInt(chatId) || 0,
+                role_id: parseInt(roleId) || 0,
+                role: roleData
+            };
+            
+            var json = JSON.stringify(apiRequest, null, 2);
+            document.getElementById('jsonOutput').textContent = json;
+            document.getElementById('jsonPreviewBox').style.display = 'block';
+        }
+
+        function copyJson() {
+            var text = document.getElementById('jsonOutput').textContent;
+            navigator.clipboard.writeText(text).then(function() {
+                alert('JSON скопирован в буфер обмена!');
+            });
+        }
+
+        function resetForm() {
+            if (confirm('Вы уверены? Все данные будут удалены.')) {
+                document.getElementById('roleName').value = '';
+                document.getElementById('roleEmoji').value = '🎭';
+                document.getElementById('roleDescription').value = '';
+                document.getElementById('cashAward').value = '0';
+                document.getElementById('requiredPlayers').value = '5';
+                document.getElementById('weightVote').value = '1';
+                document.getElementById('revengeKill').checked = false;
+                document.getElementById('enabled').checked = true;
+                document.getElementById('msgSelectAction').value = 'Выберите действие';
+                document.getElementById('skipBtnName').value = 'Пропустить ход';
+                document.getElementById('skipMessage').value = 'Игрок пропустил ход';
+                document.getElementById('chatId').value = '';
+                document.getElementById('roleId').value = '';
+                document.getElementById('actionsContainer').innerHTML = '<p style="text-align: center; color: #888; padding: 2rem;">Нет добавленных действий. Нажмите "Добавить действие"</p>';
+                document.getElementById('jsonPreviewBox').style.display = 'none';
+                actionCounter = 0;
+                
+                var buttons = document.querySelectorAll('.faction-btn');
+                for (var i = 0; i < buttons.length; i++) {
+                    buttons[i].classList.remove('active');
+                }
+                buttons[0].classList.add('active');
+                selectedFaction = 'RoleFractonPeace';
+                
+                updateStats();
+                updatePreview();
+            }
+        }
+
+        function updateStats() {
+            var actionsCount = document.querySelectorAll('.action-card').length;
+            document.getElementById('statActions').textContent = actionsCount;
+        }
+
+        function updatePreview() {
+            var roleName = document.getElementById('roleName').value || 'Без названия';
+            var roleEmoji = document.getElementById('roleEmoji').value;
+            var roleDescription = document.getElementById('roleDescription').value;
+            var actionsCount = document.querySelectorAll('.action-card').length;
+            
+            var fractionNames = {
+                'RoleFractonPeace': '🌿 Мирная фракция',
+                'RoleFractonMafia': '🕶 Фракция мафии',
+                'RoleFractonNeutral': '⚖️ Нейтральная фракция',
+                'RoleFractonKiller': '🔪 Фракция убийцы'
+            };
+            
+            var html = '<div style="background: rgba(0,0,0,0.3); padding: 1rem; border-radius: 10px; margin-bottom: 1rem;">' +
+                '<div style="display: flex; align-items: center; gap: 1rem;">' +
+                '<span style="font-size: 3rem;">' + roleEmoji + '</span>' +
+                '<div>' +
+                '<p style="font-size: 1.2rem; font-weight: bold; color: #fff;">' + roleName + '</p>' +
+                '<p style="color: #888; font-size: 0.9rem;">' + fractionNames[selectedFaction] + '</p>' +
+                '</div>' +
+                '</div>' +
+                '</div>';
+            
+            if (roleDescription) {
+                html += '<div style="background: rgba(0,0,0,0.3); padding: 1rem; border-radius: 10px; margin-bottom: 1rem;">' +
+                    '<p style="color: #ccc; font-size: 0.9rem;">' + roleDescription + '</p>' +
+                    '</div>';
+            }
+            
+            html += '<div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.5rem;">' +
+                '<div style="background: rgba(0,0,0,0.3); padding: 0.75rem; border-radius: 8px; text-align: center;">' +
+                '<p style="color: #888; font-size: 0.8rem;">Действий</p>' +
+                '<p style="color: #28a745; font-weight: bold;">' + actionsCount + '</p>' +
+                '</div>' +
+                '<div style="background: rgba(0,0,0,0.3); padding: 0.75rem; border-radius: 8px; text-align: center;">' +
+                '<p style="color: #888; font-size: 0.8rem;">Награда</p>' +
+                '<p style="color: #ffd700; font-weight: bold;">' + (document.getElementById('cashAward').value || '0') + ' ₽</p>' +
+                '</div>' +
+                '</div>';
+            
+            document.getElementById('rolePreview').innerHTML = html;
+        }
+
+        // Auto-update preview on input
+        window.onload = function() {
+            updateStats();
+            updatePreview();
+            
+            var inputs = document.querySelectorAll('input, textarea, select');
+            for (var i = 0; i < inputs.length; i++) {
+                inputs[i].addEventListener('input', updatePreview);
+                inputs[i].addEventListener('change', updatePreview);
+            }
+        };
+    ]]>
+    </script>
+</body>
+</html>
