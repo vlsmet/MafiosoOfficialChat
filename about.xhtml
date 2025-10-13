@@ -1,0 +1,474 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>О проекте - Mafioso Official</title>
+    <style type="text/css">
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: linear-gradient(180deg, #1a1d2e 0%, #232d4b 100%);
+            color: #e8e8e8;
+            min-height: 100vh;
+            padding: 2rem;
+        }
+
+        .back-btn {
+            display: inline-block;
+            color: #ffd700;
+            text-decoration: none;
+            font-size: 1rem;
+            margin-bottom: 2rem;
+            padding: 0.5rem 1rem;
+            transition: color 0.3s ease;
+        }
+
+        .back-btn:hover {
+            color: #ffed4e;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .title {
+            font-size: clamp(2rem, 5vw, 3rem);
+            font-weight: 700;
+            color: #ff4757;
+            margin-bottom: 1rem;
+            letter-spacing: 2px;
+            text-shadow: 0 0 30px rgba(255, 71, 87, 0.5);
+        }
+
+        .subtitle {
+            color: #b8b8b8;
+            font-size: 1.1rem;
+        }
+
+        .section {
+            background: rgba(255, 255, 255, 0.05);
+            border: 2px solid rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            backdrop-filter: blur(10px);
+        }
+
+        .section-title {
+            color: #ffd700;
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            font-weight: 600;
+        }
+
+        .section-text {
+            color: #e8e8e8;
+            line-height: 1.8;
+            font-size: 1.05rem;
+            margin-bottom: 1rem;
+        }
+
+        .list {
+            margin: 1rem 0;
+            padding-left: 1.5rem;
+        }
+
+        .list-item {
+            color: #b8b8b8;
+            line-height: 2;
+            font-size: 1.05rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .list-item strong {
+            color: #ffd700;
+        }
+
+        .promo-section {
+            background: rgba(255, 71, 87, 0.1);
+            border: 2px solid rgba(255, 71, 87, 0.3);
+            border-radius: 12px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            text-align: center;
+            backdrop-filter: blur(10px);
+        }
+
+        .promo-icon {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+        }
+
+        .promo-title {
+            color: #ffd700;
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+            font-weight: 700;
+        }
+
+        .promo-subtitle {
+            color: #e8e8e8;
+            font-size: 1.2rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .telegram-btn {
+            display: inline-block;
+            background: linear-gradient(135deg, #0088cc, #006699);
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            font-size: 1.2rem;
+            font-weight: 700;
+            text-decoration: none;
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            transition: all 0.3s ease;
+            margin: 1rem 0;
+        }
+
+        .telegram-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(0, 136, 204, 0.5);
+        }
+
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin: 2rem 0;
+        }
+
+        .card {
+            background: rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            padding: 1.5rem;
+            text-align: center;
+        }
+
+        .card-icon {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .card-text {
+            color: #ffd700;
+            font-weight: 600;
+        }
+
+        .founder-section {
+            background: rgba(255, 255, 255, 0.05);
+            border: 2px solid rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            backdrop-filter: blur(10px);
+        }
+
+        .founder-header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .founder-icon {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+        }
+
+        .founder-name {
+            color: #0088cc;
+            font-size: 1.3rem;
+            font-weight: 600;
+            text-decoration: none;
+        }
+
+        .founder-name:hover {
+            text-decoration: underline;
+        }
+
+        .program-section {
+            background: rgba(255, 71, 87, 0.08);
+            border: 2px solid rgba(255, 71, 87, 0.2);
+            border-radius: 12px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            backdrop-filter: blur(10px);
+        }
+
+        .program-item {
+            background: rgba(0, 0, 0, 0.4);
+            border-left: 4px solid #ffd700;
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .program-number {
+            color: #ffd700;
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .program-text {
+            color: #e8e8e8;
+            line-height: 1.8;
+            font-size: 1.05rem;
+        }
+
+        .cta-section {
+            background: rgba(255, 71, 87, 0.15);
+            border: 2px solid rgba(255, 71, 87, 0.4);
+            border-radius: 12px;
+            padding: 2rem;
+            text-align: center;
+            margin-top: 2rem;
+        }
+
+        .cta-title {
+            color: #ffd700;
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            font-weight: 700;
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: 3rem;
+            padding: 2rem 0;
+            color: #888;
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 768px) {
+            body {
+                padding: 1rem;
+            }
+
+            .section, .promo-section, .founder-section, .program-section {
+                padding: 1.5rem;
+            }
+
+            .title {
+                font-size: 2rem;
+            }
+
+            .cards-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="index.xhtml" class="back-btn">← Главное меню</a>
+
+        <div class="header">
+            <h1 class="title">О ПРОЕКТЕ</h1>
+            <p class="subtitle">Информационный портал сообщества Mafioso Official</p>
+        </div>
+
+        <!-- About Site -->
+        <div class="section">
+            <h2 class="section-title">🎮 О сайте</h2>
+            <p class="section-text">
+                Добро пожаловать на информационный портал Mafioso Official — ваш надежный помощник в мире игры "Мафия"!
+            </p>
+            <p class="section-text">
+                Этот сайт создан с любовью к игре и заботой о каждом участнике нашего сообщества.
+            </p>
+            
+            <ul class="list">
+                <li class="list-item"><strong>🎭 Роли</strong> — полное описание всех игровых ролей</li>
+                <li class="list-item"><strong>💬 Сленг чата</strong> — объяснение терминологии</li>
+                <li class="list-item"><strong>📜 Правила игры</strong> — механики игры</li>
+                <li class="list-item"><strong>🛡️ Правила общения</strong> — нормы поведения</li>
+                <li class="list-item"><strong>👮 Гайды модераторов</strong> — инструкции для администрации</li>
+                <li class="list-item"><strong>⚙️ Конструктор ролей</strong> — создание кастомных ролей</li>
+            </ul>
+        </div>
+
+        <!-- New Era Promo -->
+        <div class="promo-section">
+            <div class="promo-icon">🏛️</div>
+            <h2 class="promo-title">ПАРТИЯ NEW ERA</h2>
+            <p class="promo-subtitle">Новая эра для Mafioso Official!</p>
+            
+            <p class="section-text">
+                Этот сайт был разработан и поддерживается членами партии <strong style="color: #ff4757;">New Era</strong> — 
+                активными участниками сообщества Mafioso Official.
+            </p>
+            
+            <a href="https://t.me/NewEraMafioso" class="telegram-btn" target="_blank">
+                📱 ОТКРЫТЬ КАНАЛ NEW ERA
+            </a>
+
+            <div class="cards-grid">
+                <div class="card">
+                    <div class="card-icon">🎯</div>
+                    <p class="card-text">Качественный контент</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon">🚀</div>
+                    <p class="card-text">Постоянное развитие</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon">🤝</div>
+                    <p class="card-text">Поддержка игроков</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Founder -->
+        <div class="founder-section">
+            <div class="founder-header">
+                <div class="founder-icon">😎</div>
+                <h2 class="section-title">Основатель проекта</h2>
+                <a href="https://t.me/hoge_forever" target="_blank" class="founder-name">@hoge_forever</a>
+            </div>
+
+            <p class="section-text">
+                <strong style="color: #ffd700;">@hoge_forever</strong> присоединился к проекту 
+                <strong style="color: #ff4757;">19 апреля 2023 года</strong>, и за это время успел побывать на посту модератора.
+            </p>
+
+            <h3 class="section-title" style="font-size: 1.3rem; margin-top: 2rem;">🏆 Достижения:</h3>
+            <ul class="list">
+                <li class="list-item"><strong>🎉 Проводил челленджи</strong> — мини-игры и викторины для заработка монет</li>
+                <li class="list-item"><strong>🤝 Был ближе к игрокам</strong> — проводил голосования</li>
+                <li class="list-item"><strong>📊 Собирал мнения</strong> — слушал игроков и делал выводы</li>
+                <li class="list-item"><strong>📱 Создал телеграм канал</strong> — для обратной связи</li>
+                <li class="list-item"><strong>🎁 Награждал игроков</strong> — за креативные идеи</li>
+                <li class="list-item"><strong>💡 Придумал уникальный ивент</strong> — к дню рождения бота</li>
+            </ul>
+
+            <p class="section-text" style="text-align: center; margin-top: 2rem; padding: 1rem; background: rgba(255, 215, 0, 0.1); border-radius: 8px;">
+                ✅ <strong style="color: #ffd700;">Моя цель</strong> — чтобы каждый участник чувствовал себя частью сообщества.
+            </p>
+        </div>
+
+        <!-- Program -->
+        <div class="program-section">
+            <h2 class="section-title" style="text-align: center; margin-bottom: 2rem;">
+                🗣 Что будет, если выбрать нашу партию?
+            </h2>
+
+            <div class="program-item">
+                <div class="program-number">1️⃣ Мини-игры и челленджи</div>
+                <p class="program-text">
+                    Частые мини-игры, викторины и челленджи. Помогаем игрокам зарабатывать монеты 🪙
+                </p>
+            </div>
+
+            <div class="program-item">
+                <div class="program-number">2️⃣ Канал для игроков</div>
+                <p class="program-text">
+                    Каждый может предложить идеи. <a href="https://t.me/mafiosocouincil" target="_blank" style="color: #0088cc;">Перейти в канал →</a>
+                </p>
+            </div>
+
+            <div class="program-item">
+                <div class="program-number">3️⃣ Дружелюбная атмосфера</div>
+                <p class="program-text">
+                    Поддержка дружелюбия и уважения 💝🫂
+                </p>
+            </div>
+
+            <div class="program-item">
+                <div class="program-number">4️⃣ Обратная связь</div>
+                <p class="program-text">
+                    Каждый будет услышан. Учитываем мнение игроков 📲
+                </p>
+            </div>
+
+            <div class="program-item">
+                <div class="program-number">5️⃣ Развитие и прогресс</div>
+                <p class="program-text">
+                    Движемся вперёд без застоя 📈🚀
+                </p>
+            </div>
+
+            <div class="program-item">
+                <div class="program-number">6️⃣ Чёткая организация</div>
+                <p class="program-text">
+                    Все мероприятия по расписанию ⏰
+                </p>
+            </div>
+
+            <div class="program-item">
+                <div class="program-number">7️⃣ Креативные идеи</div>
+                <p class="program-text">
+                    Предлагайте идеи и получайте награды 🥇
+                </p>
+            </div>
+
+            <div class="program-item">
+                <div class="program-number">8️⃣ Равноправие</div>
+                <p class="program-text">
+                    Все равны, даже модераторы ⚖️
+                </p>
+            </div>
+
+            <div class="program-item">
+                <div class="program-number">9️⃣ Разнообразие</div>
+                <p class="program-text">
+                    Всегда что-то новое 💫
+                </p>
+            </div>
+
+            <div class="program-item">
+                <div class="program-number">🔟 Активные модераторы</div>
+                <p class="program-text">
+                    Новый состав модераторов для развития чата 🔝
+                </p>
+            </div>
+
+            <div class="program-item">
+                <div class="program-number">1️⃣1️⃣ Поддержка новичков</div>
+                <p class="program-text">
+                    Поможем освоиться и научим игре 🎀
+                </p>
+            </div>
+
+            <div class="program-item">
+                <div class="program-number">1️⃣2️⃣ Реформы правил</div>
+                <p class="program-text">
+                    Корректировка правил с учётом вашего мнения ✏️
+                </p>
+            </div>
+        </div>
+
+        <!-- CTA -->
+        <div class="cta-section">
+            <h2 class="cta-title">
+                New Era — это НОВАЯ ЭРА для Mafioso Official!
+            </h2>
+            <a href="https://t.me/NewEraMafioso" class="telegram-btn" target="_blank">
+                🚀 ПРИСОЕДИНИТЬСЯ К NEW ERA
+            </a>
+        </div>
+
+        <div class="footer">
+            <p>© 2025 New Era Party | Mafioso Official Community</p>
+            <p style="margin-top: 0.5rem;">
+                <a href="https://t.me/NewEraMafioso" target="_blank" style="color: #ffd700; text-decoration: none;">Telegram</a> • 
+                <a href="https://t.me/mafiosoHelp" style="color: #ffd700; text-decoration: none;">Поддержка</a> • 
+                <a href="https://t.me/hoge_forever" style="color: #ffd700; text-decoration: none;">Владелец</a>
+            </p>
+        </div>
+    </div>
+</body>
+</html>
