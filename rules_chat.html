@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mafioso Official Chat - Правила</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+            color: #e0e0e0;
+            min-height: 100vh;
+        }
+
+        /* Главное меню */
+        .header {
+            background: rgba(20, 20, 40, 0.95);
+            border-bottom: 2px solid #d32f2f;
+            padding: 20px 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+        }
+
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: #d32f2f;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .nav-menu {
+            display: none;
+        }
+
+        /* Основной контент */
+        .container {
+            max-width: 1000px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+
+        .title-section {
+            text-align: center;
+            margin-bottom: 40px;
+            padding: 30px;
+            background: rgba(30, 30, 50, 0.8);
+            border: 2px solid #d32f2f;
+            border-radius: 8px;
+        }
+
+        .title-section h1 {
+            color: #d32f2f;
+            font-size: 32px;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+        }
+
+        .title-section p {
+            color: #ffd700;
+            font-size: 13px;
+            letter-spacing: 1px;
+        }
+
+        /* Блоки с информацией */
+        .info-block {
+            background: rgba(30, 30, 50, 0.7);
+            border-left: 4px solid #d32f2f;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 4px;
+            line-height: 1.6;
+        }
+
+        .info-block h2 {
+            color: #ffd700;
+            font-size: 18px;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .info-block p {
+            color: #c0c0c0;
+            margin-bottom: 10px;
+            font-size: 14px;
+        }
+
+        .info-block ul {
+            margin-left: 20px;
+            color: #c0c0c0;
+        }
+
+        .info-block li {
+            margin-bottom: 8px;
+            font-size: 14px;
+        }
+
+        .section-toggle {
+            cursor: pointer;
+            user-select: none;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px;
+            background: rgba(50, 50, 80, 0.5);
+            border-radius: 4px;
+            margin-bottom: 10px;
+            transition: all 0.3s;
+        }
+
+        .section-toggle:hover {
+            background: rgba(60, 60, 100, 0.7);
+        }
+
+        .section-toggle h2 {
+            margin: 0;
+            font-size: 16px;
+            color: #ffd700;
+            flex: 1;
+        }
+
+        .toggle-icon {
+            color: #d32f2f;
+            font-size: 20px;
+            transition: transform 0.3s;
+        }
+
+        .toggle-icon.open {
+            transform: rotate(180deg);
+        }
+
+        .section-content {
+            display: none;
+            padding: 15px;
+            background: rgba(20, 20, 40, 0.6);
+            border-left: 4px solid #d32f2f;
+            margin-bottom: 20px;
+            border-radius: 4px;
+        }
+
+        .section-content.open {
+            display: block;
+            animation: slideDown 0.3s ease-out;
+        }
+
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .section-content p {
+            color: #c0c0c0;
+            margin-bottom: 10px;
+            font-size: 14px;
+            line-height: 1.6;
+        }
+
+        .section-content ul {
+            margin-left: 20px;
+            color: #c0c0c0;
+        }
+
+        .section-content li {
+            margin-bottom: 8px;
+            font-size: 14px;
+            line-height: 1.5;
+        }
+
+        .warning {
+            background: rgba(139, 69, 19, 0.3);
+            border-left: 4px solid #ff6b6b;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 4px;
+        }
+
+        .warning strong {
+            color: #ff6b6b;
+        }
+
+        .highlight-yellow {
+            color: #ffd700;
+            font-weight: bold;
+        }
+
+        footer {
+            text-align: center;
+            padding: 30px;
+            color: #888;
+            font-size: 12px;
+            margin-top: 50px;
+            border-top: 1px solid #d32f2f;
+        }
+
+        footer a {
+            color: #ffd700;
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        @media (max-width: 768px) {
+            .nav-menu {
+                gap: 15px;
+                font-size: 12px;
+            }
+
+            .title-section h1 {
+                font-size: 24px;
+            }
+
+            .header-content {
+                flex-direction: column;
+                gap: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Главное меню -->
+    <header class="header">
+        <div class="header-content">
+            <div class="logo">Mafioso</div>
+            <ul class="nav-menu">
+                <li><a onclick="scrollToSection('general')">Общие положения</a></li>
+                <li><a onclick="scrollToSection('rules')">Правила</a></li>
+                <li><a onclick="scrollToSection('nicknames')">Никнеймы</a></li>
+                <li><a onclick="scrollToSection('moderators')">Модераторы</a></li>
+                <li><a onclick="scrollToSection('contacts')">Контакты</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <!-- Основной контент -->
+    <div class="container">
+        <div class="title-section">
+            <h1>ПРАВИЛА ЧАТА</h1>
+            <p>Mafioso Official Chat</p>
+            <p style="margin-top: 10px; font-size: 11px;">20 декабря 2022 года (редакция от 3 января 2025 года)</p>
+        </div>
+
+        <!-- Общие положения -->
+        <div id="general">
+            <div class="section-toggle" onclick="toggleSection(this)">
+                <h2>📋 Общие положения</h2>
+                <span class="toggle-icon">▼</span>
+            </div>
+            <div class="section-content">
+                <p><strong>Полное согласие с данными Правилами</strong> является обязательным условием для участия в игровом чате. Если вы не согласны с действующими правилами, вы обязаны немедленно прекратить участие в чате.</p>
+                
+                <p>Настоящие Правила действуют для всех пользователей и определяют поведение в игровом чате. Они разработаны с целью сделать пребывание в чате максимально комфортным для каждого участника.</p>
+
+                <div class="warning">
+                    <strong>⚠️ Ответственность:</strong> Несоблюдение Правил может привести к ограничениям в участии игрового чата на длительный срок без возмещения затрат пользователю.
+                </div>
+
+                <p><strong>Официальный язык общения — русский.</strong> Общение на других языках строго запрещено.</p>
+
+                <p><span class="highlight-yellow">Администрация чата не имеет отношения к ботам @MafiososBot, @MafiosoPlatinumBot.</span> Все вопросы должны быть направлены в тех.поддержку разработчика @MafiosoBotSupport</p>
+            </div>
+        </div>
+
+        <!-- Запрещённые действия -->
+        <div id="rules">
+            <div class="section-toggle" onclick="toggleSection(this)">
+                <h2>🚫 Запрещённые действия в чате</h2>
+                <span class="toggle-icon">▼</span>
+            </div>
+            <div class="section-content">
+                <h3 style="color: #ffd700; margin-bottom: 15px;">Флуд и бессмысленные сообщения:</h3>
+                <ul>
+                    <li>Бессмысленные и бессодержательные сообщения</li>
+                    <li>Массовая рассылка рекламной информации (спам)</li>
+                    <li>Злоупотребление переносом текста и дроблением предложения</li>
+                    <li>Многократное дублирование однотипных сообщений</li>
+                    <li>Злоупотребление написанием в ВЕРХНЕМ РЕГИСТРЕ</li>
+                    <li>Злоупотребление знаками препинания и эмоджи</li>
+                    <li>Флуд реакциями под сообщениями</li>
+                    <li>Многократное использование бот-команд</li>
+                </ul>
+
+                <h3 style="color: #ff6b6b; margin-top: 20px; margin-bottom: 15px;">🚫 Дискриминация и пропаганда:</h3>
+                <ul>
+                    <li>Дискриминация на всех уровнях (национальная, расовая, религиозная, этническая)</li>
+                    <li>Политическая, религиозная и сексуальная пропаганда</li>
+                    <li>Пропаганда наркотических веществ, табака и алкоголя</li>
+                    <li>Любые проявления нацизма и национализма</li>
+                    <li>Использование нацистской символики и терминов</li>
+                </ul>
+
+                <h3 style="color: #ffd700; margin-top: 20px; margin-bottom: 15px;">🛑 Другие нарушения:</h3>
+                <ul>
+                    <li>Любые сообщения рекламного характера</li>
+                    <li>Размещение личной информации (ссылки на соц.сети, номера телефонов)</li>
+                    <li>Покупка, продажа и обмен аккаунтов Telegram</li>
+                    <li>Сообщения от сторонних ботов и каналов (via, inline режим)</li>
+                    <li>Распространение личной информации третьих лиц без согласия</li>
+                    <li>Размещение ложной информации о чате, боте и администрации</li>
+                    <li>Обсуждение методов взлома и распространение багов бота</li>
+                    <li>Угрозы в отношении участников и администрации</li>
+                    <li>Попытки выдать себя за разработчика или модератора</li>
+                    <li>Попрошайничество в любой форме</li>
+                    <li>Выманивание личной информации и логинов</li>
+                    <li>Сообщения оскорбительного характера</li>
+                    <li>Чрезмерное использование ненормативной лексики</li>
+                    <li>Публиковать сообщения забаненных игроков</li>
+                    <li>Призывать к суициду и обсуждать способы его совершения</li>
+                    <li>Публикация непристойных сообщений и материалов</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Никнеймы -->
+        <div id="nicknames">
+            <div class="section-toggle" onclick="toggleSection(this)">
+                <h2>🏷️ Требования к никнеймам</h2>
+                <span class="toggle-icon">▼</span>
+            </div>
+            <div class="section-content">
+                <p>Запрещено использование в прямой или косвенной форме следующих никнеймов:</p>
+                <ul>
+                    <li>Нарушающие любые предоставленные правила</li>
+                    <li>Пропагандирующие дискриминацию на всех уровнях</li>
+                    <li>Содержащих информацию, которая может вызвать ошибочное восприятие как представителя Администрации или Модераторов</li>
+                    <li>Пустой, нечитаемый, слишком длинный или короткий никнейм</li>
+                    <li>Содержащих указание на действия, запрещённые правилами или законодательством</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Модераторы -->
+        <div id="moderators">
+            <div class="section-toggle" onclick="toggleSection(this)">
+                <h2>👮 Модераторы и арбитраж</h2>
+                <span class="toggle-icon">▼</span>
+            </div>
+            <div class="section-content">
+                <h3 style="color: #ffd700; margin-bottom: 15px;">Обязанности Модератора:</h3>
+                <ul>
+                    <li>Применять ограничения по отношению к пользователям, нарушающим правила чата</li>
+                    <li>Отвечать на вопросы пользователей</li>
+                </ul>
+
+                <div class="warning">
+                    <strong>Важно:</strong> Модератор не обязан предупреждать пользователя о применении ограничений — действует постмодерация. Модератор также не обязан объяснять причины наложенного ограничения.
+                </div>
+
+                <h3 style="color: #ffd700; margin-top: 20px; margin-bottom: 15px;">Обжалование наказаний:</h3>
+                <ul>
+                    <li>Обратитесь за разъяснениями в тех.поддержку: <strong>@MafiosoChatSupportBot</strong></li>
+                    <li>При необходимости обращайтесь к администратору: <strong>@vlsmet</strong></li>
+                    <li>Решение администратора является <strong>окончательным</strong> и пересмотру не подлежит</li>
+                </ul>
+
+                <div class="warning">
+                    <strong>⚠️ Переписка:</strong> Переписка с поддержкой является личной. Размещение переписки где-либо недопустимо.
+                </div>
+            </div>
+        </div>
+
+        <!-- Контакты -->
+        <div id="contacts">
+            <div class="section-toggle" onclick="toggleSection(this)">
+                <h2>📞 Контакты для связи</h2>
+                <span class="toggle-icon">▼</span>
+            </div>
+            <div class="section-content">
+                <ul>
+                    <li><strong>Разработчик бота Mafioso:</strong> @MafiosoBotSupport</li>
+                    <li><strong>Тех.поддержка чата:</strong> @MafiosoChatSupportBot</li>
+                    <li><strong>Администрация чата:</strong> @vlsmet</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>© 2022-2025 Mafioso Official Chat | Все права защищены</p>
+        <p style="margin-top: 10px; color: #666;">Последнее обновление: 3 января 2025 года</p>
+    </footer>
+
+    <script>
+        function toggleSection(element) {
+            const content = element.nextElementSibling;
+            const icon = element.querySelector('.toggle-icon');
+            
+            content.classList.toggle('open');
+            icon.classList.toggle('open');
+        }
+
+        function scrollToSection(id) {
+            const element = document.getElementById(id);
+            if (element) {
+                element.scrollIntoView({ behavior: 'smooth' });
+                const toggle = element.querySelector('.section-toggle');
+                const content = element.querySelector('.section-content');
+                if (toggle && !content.classList.contains('open')) {
+                    toggleSection(toggle);
+                }
+            }
+        }
+    </script>
+</body>
+</html>
+</html>

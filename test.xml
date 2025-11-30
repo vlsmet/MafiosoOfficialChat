@@ -1,0 +1,31 @@
+<?xml-stylesheet type="text/xsl" href="view/style/style.xsl"?>
+<WebApp title="Welcome Page" icon="view/favicon.png">
+  <Text
+    format="bold italic"
+    decoration="underline"
+    decoration-color="#0000ff"
+    decoration-style="wavy"
+    color="#ff0000"
+    bgcolor="#ffff00"
+    font="sans-serif"
+    font-size="18px"
+    cursor="pointer"
+    border="ridge"
+    border-color="#ff0000 #00ff00 #0000ff #ff00ff"
+    border-size="2px"
+    padding="4px">Работаем</Text>
+  <Separate type="horizontal" size="5px"/>
+  Работаем
+  <Separate size="5px"/>
+  <Separate type="horizontal" size="110px"/>
+  <Link
+    bgcolor="#000044"
+    url="https://vlsmet.com/"
+    color="white"
+    decoration="underline">Жопп</Link>
+  <TextField type="text" border="dotted" hint="Поле для чего-то">Лала</TextField>
+  <Separate size="5px"/>
+  <Separate type="horizontal" size="210px"/>
+  <TextField type="box" border="dotted" hint="И это тоже">Олала</TextField>
+  <TextField type="text" border="dotted" hint="Чё здесь"/>
+</WebApp>
